@@ -306,14 +306,11 @@ flutter run            # Connect a physical Android device or emulator
 
 ---
 
-## 🤝 Collaborative Forge
+## 👨‍💻 Built By
 
-> Built by two minds, one vision.
-
-| Entity | Role | Zone |
-| :--- | :--- | :--- |
-| **👑 Paradox** *(Lead Architect)* | Architecture, backend, systems design, E2EE, direction | `backend/*` `feature/*` |
-| **🤖 Antigravity** *(AI Co-Pilot)* | Code scaffolding, infra setup, pair programming | All layers |
+| | |
+| :--- | :--- |
+| **👑 Paradox** | Solo architect, engineer & designer. Backend, mobile, systems design, E2EE — all of it. |
 
 ---
 

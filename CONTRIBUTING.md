@@ -97,12 +97,11 @@ chore: update Turso client to v0.3.1
 
 ---
 
-## 🏗️ Project Architects
+## 🏗️ Project Architect
 
 | Role | Handle | Zone |
 | :--- | :--- | :--- |
-| **👑 Lead Architect** | Paradox | Backend, Architecture, Systems Design, E2EE |
-| **🤖 AI Co-Pilot** | Antigravity | Code scaffolding, infrastructure support |
+| **👑 Solo Architect & Engineer** | Paradox | Backend, Frontend, Architecture, Systems Design, E2EE — everything |
 
 ---
 
