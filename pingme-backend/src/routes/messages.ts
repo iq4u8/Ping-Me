@@ -4,6 +4,7 @@ import db from '../utils/db.js';
 import { authMiddleware } from '../middlewares/auth.js';
 import { WebSocketManager } from '../websocket/manager.js';
 import { MessageStatusService } from '../services/messageStatusService.js';
+import { NotificationService } from '../services/notificationService.js';
 
 export default async function messageRoutes(fastify: FastifyInstance) {
   fastify.addHook('preHandler', authMiddleware);
@@ -66,9 +67,29 @@ export default async function messageRoutes(fastify: FastifyInstance) {
         created_at: new Date().toISOString(),
       };
 
-      // 5. Broadcast via WebSocket
+      // 5. Broadcast via WebSocket and send Push to offline users
       members.rows.forEach((row: any) => {
-        WebSocketManager.sendToUser(row.user_id, 'message:new', messageData);
+        const recipientId = row.user_id;
+        
+        // Always send via WebSocket (manager handles if they are connected)
+        WebSocketManager.sendToUser(recipientId, 'message:new', messageData);
+
+        // If user is offline and not the sender, send Push Notification
+        if (recipientId !== sender_id && !WebSocketManager.isUserOnline(recipientId)) {
+          // Fetch sender name for the notification
+          db.execute({
+            sql: 'SELECT display_name FROM users WHERE id = ?',
+            args: [sender_id]
+          }).then(userResult => {
+            const senderName = userResult.rows.length > 0 ? (userResult.rows[0] as any).display_name : 'New Message';
+            NotificationService.sendToUser(
+              recipientId, 
+              senderName, 
+              'New encrypted message',
+              { conversation_id, message_id: messageId }
+            );
+          }).catch(err => console.error('Error fetching sender for notification:', err));
+        }
       });
 
       return reply.send({ success: true, message: messageData });

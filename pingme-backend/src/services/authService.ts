@@ -111,4 +111,14 @@ export class AuthService {
       args: [sessionId, userId],
     });
   }
+
+  static async updateFcmToken(userId: string, ipAddress: string, fcmToken: string) {
+    // Update the most recent active session for this user and IP
+    await db.execute({
+      sql: `UPDATE sessions SET fcm_token = ? 
+            WHERE user_id = ? AND ip_address = ? AND is_active = 1
+            ORDER BY created_at DESC LIMIT 1`,
+      args: [fcmToken, userId, ipAddress],
+    });
+  }
 }

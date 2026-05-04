@@ -9,7 +9,8 @@ async function updateSchema() {
     "ALTER TABLE users ADD COLUMN phone_visible INTEGER DEFAULT 0",
     "ALTER TABLE users ADD COLUMN read_receipts_enabled INTEGER DEFAULT 1",
     "ALTER TABLE users ADD COLUMN notifications_enabled INTEGER DEFAULT 1",
-    "ALTER TABLE users ADD COLUMN deletion_scheduled_at DATETIME"
+    "ALTER TABLE users ADD COLUMN deletion_scheduled_at DATETIME",
+    "ALTER TABLE sessions ADD COLUMN fcm_token TEXT"
   ];
 
   for (const sql of columns) {

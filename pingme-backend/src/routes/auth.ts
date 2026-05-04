@@ -100,4 +100,15 @@ export default async function authRoutes(fastify: FastifyInstance) {
     await AuthService.revokeSession(request.user.id, id);
     return reply.send({ success: true });
   });
+
+  // Update FCM Token
+  fastify.post('/fcm-token', { preHandler: [authMiddleware] }, async (request, reply) => {
+    const { fcm_token } = request.body as any;
+    if (!fcm_token) {
+      return reply.status(400).send({ success: false, error: 'fcm_token required' });
+    }
+
+    await AuthService.updateFcmToken(request.user.id, request.ip, fcm_token);
+    return reply.send({ success: true });
+  });
 }
