@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../theme.dart';
 import '../../presentation/viewmodels/chat_viewmodel.dart';
+import '../../presentation/viewmodels/theme_viewmodel.dart';
 
 class ChatListScreen extends StatefulWidget {
-  const ChatListScreen({super.key});
+  final Function(int)? onTabSwitch;
+
+  const ChatListScreen({super.key, this.onTabSwitch});
 
   @override
   State<ChatListScreen> createState() => _ChatListScreenState();
@@ -29,7 +32,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
 
     return Scaffold(
       backgroundColor: colorScheme.background,
-      endDrawer: const _ChatListEndDrawer(),
+      endDrawer: _ChatListEndDrawer(onTabSwitch: widget.onTabSwitch),
       body: SafeArea(
         child: Column(
           children: [
@@ -385,7 +388,9 @@ class ChatListItem extends StatelessWidget {
 }
 
 class _ChatListEndDrawer extends StatelessWidget {
-  const _ChatListEndDrawer();
+  final Function(int)? onTabSwitch;
+
+  const _ChatListEndDrawer({this.onTabSwitch});
 
   @override
   Widget build(BuildContext context) {
@@ -429,16 +434,29 @@ class _ChatListEndDrawer extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            IconButton(
-                              icon: Icon(Icons.light_mode_outlined, color: colorScheme.onSurface, size: 20),
-                              onPressed: () {},
-                              constraints: const BoxConstraints(),
-                              padding: const EdgeInsets.all(4),
+                            Consumer<ThemeViewModel>(
+                              builder: (context, themeVM, _) {
+                                IconData themeIcon = Icons.brightness_auto;
+                                if (themeVM.currentMode == AppThemeMode.light) {
+                                  themeIcon = Icons.light_mode;
+                                } else if (themeVM.currentMode == AppThemeMode.dark) {
+                                  themeIcon = Icons.dark_mode;
+                                }
+                                return IconButton(
+                                  icon: Icon(themeIcon, color: colorScheme.onSurface, size: 20),
+                                  onPressed: () => themeVM.cycleTheme(),
+                                  constraints: const BoxConstraints(),
+                                  padding: const EdgeInsets.all(4),
+                                );
+                              },
                             ),
                             const SizedBox(height: 8),
                             IconButton(
                               icon: Icon(Icons.bookmark_border, color: colorScheme.onSurface, size: 20),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pushNamed(context, '/saved_messages');
+                              },
                               constraints: const BoxConstraints(),
                               padding: const EdgeInsets.all(4),
                             ),
@@ -478,29 +496,78 @@ class _ChatListEndDrawer extends StatelessWidget {
                   children: [
                     _DrawerTile(icon: Icons.add, label: 'Add Account', colorScheme: colorScheme),
                     Divider(color: colorScheme.onSurface.withOpacity(0.1)),
-                    _DrawerTile(icon: Icons.person_outline, label: 'My Profile', colorScheme: colorScheme),
+                    _DrawerTile(
+                      icon: Icons.person_outline, 
+                      label: 'My Profile', 
+                      colorScheme: colorScheme,
+                      onTap: () {
+                        Navigator.pop(context);
+                        onTabSwitch?.call(3);
+                      },
+                    ),
                     Divider(color: colorScheme.onSurface.withOpacity(0.1)),
-                    _DrawerTile(icon: Icons.group_outlined, label: 'New Group', colorScheme: colorScheme),
-                    _DrawerTile(icon: Icons.campaign_outlined, label: 'New Channel', colorScheme: colorScheme),
+                    _DrawerTile(
+                      icon: Icons.group_outlined, 
+                      label: 'New Group', 
+                      colorScheme: colorScheme,
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/create_group');
+                      },
+                    ),
+                    _DrawerTile(
+                      icon: Icons.campaign_outlined, 
+                      label: 'New Channel', 
+                      colorScheme: colorScheme,
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/create_channel');
+                      },
+                    ),
                     Divider(color: colorScheme.onSurface.withOpacity(0.1)),
-                    _DrawerTile(icon: Icons.person_search_outlined, label: 'Contacts', colorScheme: colorScheme),
+                    _DrawerTile(
+                      icon: Icons.person_search_outlined, 
+                      label: 'Contacts', 
+                      colorScheme: colorScheme,
+                      onTap: () {
+                        Navigator.pop(context);
+                        onTabSwitch?.call(1);
+                      },
+                    ),
                     _DrawerTile(
                       icon: Icons.folder_outlined, 
                       label: 'Chat Folders', 
                       colorScheme: colorScheme,
                       onTap: () {
-                        Navigator.pop(context); // Close drawer
+                        Navigator.pop(context);
                         Navigator.pushNamed(context, '/chat_folders');
                       },
                     ),
-                    _DrawerTile(icon: Icons.bookmark_border, label: 'Saved Messages', colorScheme: colorScheme),
-                    _DrawerTile(icon: Icons.call_outlined, label: 'Calls', colorScheme: colorScheme),
+                    _DrawerTile(
+                      icon: Icons.bookmark_border, 
+                      label: 'Saved Messages', 
+                      colorScheme: colorScheme,
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/saved_messages');
+                      },
+                    ),
+                    _DrawerTile(
+                      icon: Icons.call_outlined, 
+                      label: 'Calls', 
+                      colorScheme: colorScheme,
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/call_history');
+                      },
+                    ),
                     _DrawerTile(
                       icon: Icons.settings_outlined, 
                       label: 'Settings', 
                       colorScheme: colorScheme,
                       onTap: () {
                         Navigator.pop(context);
+                        onTabSwitch?.call(2);
                       },
                     ),
                   ],

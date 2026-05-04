@@ -6,7 +6,7 @@ import 'data/repositories/chat_repository_impl.dart';
 import 'presentation/viewmodels/auth_viewmodel.dart';
 import 'presentation/viewmodels/chat_viewmodel.dart';
 import 'features/auth/presentation/screens/welcome_screen.dart';
-import 'features/auth/presentation/screens/animated_splash_screen.dart';
+
 import 'features/auth/presentation/screens/otp_screen.dart';
 import 'features/auth/presentation/screens/username_setup_screen.dart';
 import 'features/auth/identify_screen.dart';
@@ -14,10 +14,14 @@ import 'features/home/home_screen.dart';
 import 'features/chat/conversation_screen.dart';
 import 'features/chat/new_message_screen.dart';
 import 'features/chat/chat_folders_screen.dart';
+import 'features/chat/saved_messages_screen.dart';
 import 'features/settings/appearance_screen.dart';
 import 'features/settings/chat_wallpapers_screen.dart';
 import 'features/profile/qr_code_screen.dart';
 import 'features/profile/edit_info_screen.dart';
+import 'features/groups/create_group_screen.dart';
+import 'features/channels/create_channel_screen.dart';
+import 'features/calls/call_history_screen.dart';
 
 import 'presentation/viewmodels/theme_viewmodel.dart';
 
@@ -54,13 +58,9 @@ class PingMeApp extends StatelessWidget {
       darkTheme: themeVM.currentMode == AppThemeMode.defaultTheme
           ? WireTheme.defaultTheme
           : WireTheme.dark,
-      initialRoute: '/',
+      initialRoute: '/welcome',
       onGenerateRoute: (settings) {
         switch (settings.name) {
-          case '/':
-            return MaterialPageRoute(
-              builder: (context) => const AnimatedSplashScreen(),
-            );
           case '/welcome':
             return MaterialPageRoute(
               builder: (context) => const WelcomeScreen(),
@@ -99,6 +99,14 @@ class PingMeApp extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => const QrCodeScreen());
           case '/edit_info':
             return MaterialPageRoute(builder: (context) => const EditInfoScreen());
+          case '/create_group':
+            return MaterialPageRoute(builder: (context) => const CreateGroupScreen());
+          case '/create_channel':
+            return MaterialPageRoute(builder: (context) => const CreateChannelScreen());
+          case '/call_history':
+            return MaterialPageRoute(builder: (context) => const CallHistoryScreen());
+          case '/saved_messages':
+            return MaterialPageRoute(builder: (context) => const SavedMessagesScreen());
           default:
             return null;
         }

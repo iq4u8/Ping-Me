@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isNavBarHidden = false;
 
   List<Widget> get _pages => [
-    const ChatListScreen(),
+    ChatListScreen(onTabSwitch: (index) => setState(() => _currentIndex = index)),
     const ContactsScreen(),
     const SettingsScreen(),
     ProfileScreen(

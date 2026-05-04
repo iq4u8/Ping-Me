@@ -116,6 +116,7 @@ class _NewMessageScreenState extends State<NewMessageScreen> {
                           iconColor: Colors.blueAccent,
                           label: 'New Group',
                           colorScheme: colorScheme,
+                          onTap: () => Navigator.pushNamed(context, '/create_group'),
                         ),
                         Divider(height: 1, color: colorScheme.background),
                         _ActionTile(
@@ -123,6 +124,7 @@ class _NewMessageScreenState extends State<NewMessageScreen> {
                           iconColor: Colors.greenAccent,
                           label: 'New Channel',
                           colorScheme: colorScheme,
+                          onTap: () => Navigator.pushNamed(context, '/create_channel'),
                         ),
                       ],
                     ),
@@ -224,18 +226,20 @@ class _ActionTile extends StatelessWidget {
   final Color iconColor;
   final String label;
   final ColorScheme colorScheme;
+  final VoidCallback? onTap;
 
   const _ActionTile({
     required this.icon,
     required this.iconColor,
     required this.label,
     required this.colorScheme,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap ?? () {},
       borderRadius: BorderRadius.circular(16),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
