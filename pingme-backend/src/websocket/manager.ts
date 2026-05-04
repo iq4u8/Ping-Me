@@ -23,6 +23,10 @@ export class WebSocketManager {
     }
   }
 
+  static isUserOnline(userId: string): boolean {
+    return this.connections.has(userId) && this.connections.get(userId)!.size > 0;
+  }
+
   static sendToUser(userId: string, event: string, data: any) {
     const userConns = this.connections.get(userId);
     if (userConns) {
