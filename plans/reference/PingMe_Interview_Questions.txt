@@ -1,0 +1,654 @@
+
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║              📱 PingMe — Complete Discovery Interview Questions                  ║
+║              Fill ALL answers below, then send this file back.                   ║
+║              Format: Write your answer on the line AFTER each question.          ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
+
+INSTRUCTIONS:
+- Write your answer on the blank line below each question
+- If you don't know, write: SKIP or UNSURE
+- If not applicable, write: N/A
+- You can write as long or short as you want per answer
+- Do NOT delete any questions
+
+════════════════════════════════════════════════════════════════
+SECTION A — CHATTING
+════════════════════════════════════════════════════════════════
+
+A1. What message types are supported?
+    (Text / Images / Videos / Voice Notes / Documents / Stickers / GIFs / Location / Polls / Contact Cards — tick all that apply)
+    YOUR ANSWER: (Text / Images / Videos / Voice Notes / Documents / Stickers / GIFs / Location / Polls / Contact Cards) all types ✅
+
+A2. Message status indicators needed?
+    (Sent ✓ / Delivered ✓✓ / Read 🔵 — which ones?)
+    YOUR ANSWER:(Sent ✓ / Delivered ✓✓ / Read 🔵) all types ✅
+
+
+A3. Can users edit messages after sending? If yes, within what time limit?
+    YOUR ANSWER: yes ✅ max withing 5 min editable
+
+A4. Can users delete messages after sending?
+    (Delete for self only / Delete for everyone / Both — within time limit?)
+    YOUR ANSWER: (Delete for self only / Delete for everyone) all types & delete for everyone with no limits ✅ 
+
+
+A5. Reply to a specific message needed? Threaded conversations?
+    YOUR ANSWER: yes ✅
+
+
+A6. Message forwarding allowed?
+    (With original sender name / Without sender name / Not allowed?)
+    YOUR ANSWER: all types ✅
+
+
+A7. Typing indicator ("XYZ is typing...") needed?
+    YOUR ANSWER: yes ✅
+
+A8. Online / Last Seen status visible?
+    YOUR ANSWER: yes ✅
+
+A9. Message search inside chats?
+    YOUR ANSWER: yes ✅
+
+A10. Chat backup — where?
+     (Local device only / Cloud backup / Both / None?)
+     YOUR ANSWER: Local device only ✅
+
+A11. Maximum message character length?
+     (e.g. 4096 chars like Telegram, or custom?)
+     YOUR ANSWER: 4096 chars like Telegram ✅
+
+A12. Auto-delete / Self-destruct messages feature?
+     (Like Telegram Secret Chat — messages vanish after X time?)
+     YOUR ANSWER: yes ✅
+
+A13. Message reactions (like emoji reactions on messages)?
+     YOUR ANSWER: yes ✅
+
+A14. Pinned messages inside 1-on-1 chats?
+     YOUR ANSWER: yes ✅
+
+A15. "Saved Messages" feature (like Telegram's own cloud notepad)?
+     YOUR ANSWER: yes ✅
+
+════════════════════════════════════════════════════════════════
+SECTION B — CALLING
+════════════════════════════════════════════════════════════════
+
+B1. Voice calls, Video calls, or both?
+    YOUR ANSWER: all types ✅
+
+
+B2. Group calls allowed? If yes, max how many participants?
+    YOUR ANSWER: yes ✅ max 10 users in group
+
+B3. Call recording feature needed?
+    YOUR ANSWER: no ❌
+
+B4. Screen sharing during calls?
+    YOUR ANSWER: no ❌
+
+B5. Call quality — auto-adjust based on network, or fixed quality?
+    YOUR ANSWER: yes ✅
+
+B6. Missed call notifications?
+    YOUR ANSWER: yes ✅
+
+B7. Call history / call logs needed in app?
+    YOUR ANSWER: yes ✅
+
+B8. Noise cancellation or background blur in video calls?
+    YOUR ANSWER: yes ✅
+
+B9. "Ring on all devices" if user is logged in on multiple devices?
+    YOUR ANSWER: yes ✅
+
+════════════════════════════════════════════════════════════════
+SECTION C — ENCRYPTION
+════════════════════════════════════════════════════════════════
+
+C1. E2EE for everything, or only special "Secret Chat" mode?
+    YOUR ANSWER: all types ✅
+
+C2. Which encryption protocol?
+    (Signal Protocol / Custom / Standard TLS only / Unsure?)
+    YOUR ANSWER: choose yourself best one 
+
+C3. Zero-knowledge server — even your own server cannot read messages?
+    YOUR ANSWER: choose yourself best one
+
+C4. Calls also end-to-end encrypted?
+    YOUR ANSWER: yes ✅
+
+C5. Key exchange method — on-device generated, or server-assisted?
+    YOUR ANSWER: all types ✅
+
+C6. If user loses device — can they recover encrypted chat history?
+    YOUR ANSWER: choose yourself best one
+
+C7. Key backup — where stored?
+    (User's own cloud / Infisical / KMS / Not backed up?)
+    YOUR ANSWER: choose yourself best one
+
+════════════════════════════════════════════════════════════════
+SECTION D — GROUPS & CHANNELS
+════════════════════════════════════════════════════════════════
+
+D1. Groups — all members can chat? Max member limit?
+    YOUR ANSWER: choose yourself best one
+
+D2. Channels — only admin posts, unlimited subscribers?
+    YOUR ANSWER: yes ✅
+
+D3. Admin roles needed?
+    (Creator / Admin / Moderator / Member — which roles and what permissions per role?)
+    YOUR ANSWER:yes ✅
+
+D4. Who can create groups/channels?
+    (Anyone / Only verified users / Only admins?)
+    YOUR ANSWER: choose yourself best one
+
+D5. Group/Channel discovery — public directory, or invite-only?
+    YOUR ANSWER: all types depend on pulic/private Group/Channel ✅
+
+D6. Pinned messages in groups/channels?
+    YOUR ANSWER: yes ✅
+
+D7. Who can add new members to a group?
+    (Anyone / Admins only / Creator only?)
+    YOUR ANSWER: choose yourself best and anyone those have invite links and links and admins
+
+D8. Group join requests — auto-approve or admin must approve?
+    YOUR ANSWER: choose yourself best one
+
+D9. Group/channel description and profile photo?
+    YOUR ANSWER: all types ✅
+
+D10. Slow mode in groups? (Limit how often a member can send messages)
+     YOUR ANSWER: yes ✅
+
+════════════════════════════════════════════════════════════════
+SECTION E — INVITE / JOIN LINKS
+════════════════════════════════════════════════════════════════
+
+E1. One-time use links, or reusable links?
+    YOUR ANSWER: all types ✅
+
+E2. Expiry time settable on links? (e.g., expires in 24 hours)
+    YOUR ANSWER: all types ✅
+
+E3. QR code for joining groups/channels?
+    YOUR ANSWER:
+ all types ✅
+
+E4. Admin approval required before joining via link?
+    YOUR ANSWER:choose yourself best one
+
+E5. Revoke / regenerate link feature?
+    YOUR ANSWER: choose yourself best one
+
+E6. Max usage limit on a single link? (e.g., max 100 joins per link)
+    YOUR ANSWER:choose yourself best one
+
+════════════════════════════════════════════════════════════════
+SECTION F — UNIQUE ID & USERNAME (also make any changes or edit by superadmin and app owner and team via desktop admin app only)
+════════════════════════════════════════════════════════════════
+
+F1. Unique ID format — numeric only (like Telegram) or alphanumeric?
+    YOUR ANSWER: all types ✅
+
+
+F2. Auto-generated or user can choose their ID?
+    YOUR ANSWER: Auto-generated ✅ 
+
+F3. Can Unique ID be changed later?
+    YOUR ANSWER: no ❌
+
+F4. Username — can it be changed? How many times?
+    YOUR ANSWER: no limits
+
+F5. Min/max username length?
+    YOUR ANSWER: minimum 6 character for everyone
+
+F6. Reserved/prohibited usernames blocked? (e.g., "admin", "support", "pingme")
+    YOUR ANSWER: all releted app types ✅
+
+F7. Case-insensitive usernames? (@User = @user = @USER?)
+    YOUR ANSWER: yes ✅ all are same if small or big mix using 
+
+F8. Username used for login, or only for discovery?
+    YOUR ANSWER: for both ✅
+
+════════════════════════════════════════════════════════════════
+SECTION G — PHONE NUMBER & AUTHENTICATION
+════════════════════════════════════════════════════════════════
+
+G1. Phone number mandatory for signup, or optional?
+    YOUR ANSWER: optional ✅
+
+G2. Can users hide phone number from others?
+    YOUR ANSWER: yes ✅
+
+G3. Phone contacts sync to find friends?
+    YOUR ANSWER: no ❌
+
+G4. Which countries supported at launch?
+    (India only / South Asia / Global?)
+    YOUR ANSWER: choose yourself best one
+
+G5. OTP delivery method?
+    (SMS / WhatsApp OTP / Email OTP / All of the above?)
+    YOUR ANSWER: WhatsApp OTP / Email OTP both ✅ anyone choosing option
+
+G6. Login via phone number, username, or both?
+    YOUR ANSWER: Login via phone number via WhatsApp , username , email ,all types ✅
+
+G7. Resend OTP — after how many seconds? Max retries?
+    YOUR ANSWER: 3 times then limit for first limit for 1 hours then 2nd time limits for 4 hours then 3rd time again 3 retrives failed then 24 hours limit for retry
+
+G8. International phone numbers supported from day 1?
+    YOUR ANSWER: International phone numbers supported all types supported 
+
+════════════════════════════════════════════════════════════════
+SECTION H — PROFILE, PRIVACY & NOTIFICATIONS
+════════════════════════════════════════════════════════════════
+
+H1. Profile picture support?
+    YOUR ANSWER: yes ✅
+
+H2. Bio / About section?
+    YOUR ANSWER: yes ✅
+
+H3. Last seen privacy settings?
+    (Everyone / Contacts only / Nobody / Custom?)
+    YOUR ANSWER: yes ✅
+
+H4. Block users feature?
+    YOUR ANSWER: yes ✅
+
+H5. Push notifications needed?
+    YOUR ANSWER:yes ✅
+
+H6. Notification content preview?
+    (Show message content / Hide content / User's choice?)
+    YOUR ANSWER: yes ✅
+
+H7. Per-chat mute / custom notification sound?
+    YOUR ANSWER: yes ✅
+
+H8. Do Not Disturb / Silent mode?
+    YOUR ANSWER: yes ✅
+
+H9. Multiple profile photos (like Telegram's profile photo history)?
+    YOUR ANSWER: yes ✅
+
+════════════════════════════════════════════════════════════════
+SECTION I — PLATFORM & INFRASTRUCTURE
+════════════════════════════════════════════════════════════════
+
+I1. Target platforms?
+    (Android / iOS / Web / Windows Desktop / Mac Desktop — which ones?)
+    YOUR ANSWER: currently for android but in future 1 by 1 all platform 
+
+I2. App framework?
+    (Flutter / React Native / Native Android+iOS / Web only?)
+    YOUR ANSWER: flutter
+
+I3. Expected initial user base at launch?
+    (100 / 1000 / 10,000 / 100,000 users?)
+    YOUR ANSWER: 100
+
+I4. Infrastructure preference?
+    (Self-hosted / AWS / GCP / Cloudflare / Mix of free tools?)
+    YOUR ANSWER: Mix of free tools
+
+I5. Monthly infrastructure budget?
+    (₹0 free tier only / ₹500–2000 / ₹5000+ / Flexible?)
+    YOUR ANSWER: ₹0 free tier only
+
+I6. Primary backend language preference?
+    (Node.js / Python / Go / Java / No preference?)
+    YOUR ANSWER: No preference
+
+════════════════════════════════════════════════════════════════
+SECTION J — MONETIZATION & LEGAL
+════════════════════════════════════════════════════════════════
+
+J1. Free app, or premium features planned?
+    YOUR ANSWER: free
+
+J2. Monetization model?
+    (Ads / Subscription / One-time purchase / Donations / None?)
+    YOUR ANSWER: none
+
+J3. GDPR or Indian IT Act compliance needed?
+    YOUR ANSWER: choose yourself best one
+
+J4. Data retention policy — how long to keep messages on server?
+    YOUR ANSWER: choose yourself best one
+
+J5. User data export / account deletion feature?
+    YOUR ANSWER: all types ✅
+
+
+════════════════════════════════════════════════════════════════
+SECTION K — SECURITY & MODERATION 
+════════════════════════════════════════════════════════════════
+
+K1. Two-Factor Authentication (2FA) support?
+    YOUR ANSWER: yes ✅
+
+K2. Active device list + remote logout from devices?
+    YOUR ANSWER: yes ✅
+
+K3. Report spam / abuse feature?
+    YOUR ANSWER: yes ✅
+
+K4. Content moderation — automated AI, manual, or both?
+    YOUR ANSWER: choose yourself best one
+
+K5. Session timeout — auto-logout after inactivity?
+    YOUR ANSWER: choose yourself best one
+
+K6. Anti-screenshot in secret chats?
+    YOUR ANSWER: yes ✅
+
+════════════════════════════════════════════════════════════════
+SECTION L — ADMIN APP & DASHBOARD  owner/controller team in desktop admin app only
+
+════════════════════════════════════════════════════════════════
+
+L1. Separate admin panel / dashboard needed?
+    (Web dashboard / Mobile admin app / Both?)
+    YOUR ANSWER: Desktop app (.exe)
+
+L2. What should admins see in the dashboard?
+    (Total users / Active users / Message volume / Storage used / API usage / All?)
+    YOUR ANSWER: all types ✅
+
+
+L3. Admin roles — who gets admin access?
+    (Super Admin / Moderator / Read-only Viewer?)
+    YOUR ANSWER: all types ✅
+
+L4. Admins should be able to ban/unban users from dashboard?
+    YOUR ANSWER: yes ✅
+
+L5. Admins should be able to delete content/messages from dashboard?
+    YOUR ANSWER: yes ✅
+
+L6. Real-time alerts to admin when something goes wrong?
+    (High server load / DB failure / API limit hit — via email/Slack/push?)
+    YOUR ANSWER: yes ✅
+
+(Important point app control access for analisis and monitering and this  desktop app access only super admins and owner only not a app users or not a inside app users admin or all no one can understand inside app users admin and owners are totally different from super admins off control app owner )
+
+════════════════════════════════════════════════════════════════
+SECTION M — STORAGE ANALYSIS & MONITORING owner/controller team in desktop admin app only
+
+════════════════════════════════════════════════════════════════
+
+M1. Should the admin dashboard show real-time storage usage?
+    (Current used vs total capacity — for both media storage and database?)
+    YOUR ANSWER: yes ✅
+
+M2. Should there be a visual storage meter/graph?
+    (Like a progress bar showing 7.2 GB / 10 GB used — per account/bucket?)
+    YOUR ANSWER: yes ✅
+
+M3. Storage breakdown needed?
+    (Show separately: Images used X GB / Videos used X GB / Voice notes X GB / Documents X GB?)
+    YOUR ANSWER: choose yourself best one
+
+M4. Per-user storage usage visible to admin?
+    (See which users are consuming the most storage?)
+    YOUR ANSWER: no ❌
+
+M5. Storage usage alerts — at what % should admin be notified?
+    (e.g., Alert at 70% / 85% / 95% full — or custom threshold?)
+    YOUR ANSWER: choose yourself best one
+
+M6. Alert delivery method for storage warnings?
+    (In-app admin notification / Email / Slack / Telegram bot message / All?)
+    YOUR ANSWER: (In-app admin notification / Email -- this alert only for main owner and super admin only app controller and developer )not for anyone app users or not for admin / owenrs of group or chanls
+
+M7. Auto-alert when database row count approaches free tier limit?
+    (e.g., Turso free limit is 500M reads/month — alert at 80%?)
+    YOUR ANSWER: choose yourself best one
+
+M8. Historical storage trend graph?
+    (Show storage growth over last 7 days / 30 days / 3 months?)
+    YOUR ANSWER:yes ✅
+
+M9. Estimated "days until full" prediction shown to admin?
+    (Auto-calculate based on growth rate — like "At current rate, full in 12 days")
+    YOUR ANSWER: choose yourself best one
+
+M10. Per-storage-account breakdown?
+     (If using multi-account sharding, show each R2 account's usage separately?)
+     YOUR ANSWER: all types ✅
+
+
+════════════════════════════════════════════════════════════════
+SECTION N — ADVANCED STORAGE UPGRADE SYSTEM owner/controller team in desktop admin app only
+════════════════════════════════════════════════════════════════
+
+N1. Should admins be able to add new storage accounts from the dashboard?
+    (Add a new Cloudflare R2 account key without touching code?)
+    YOUR ANSWER: yes only dev and owner and controller team in desktop app ✅
+
+N2. Same for database — add new Turso database accounts from dashboard?
+    YOUR ANSWER: owner/controller team in desktop admin app only
+
+
+N3. When a new storage account is added, how should files be distributed?
+    (New files only go to new account / Rebalance all old files too / Smart hash distribution?)
+    YOUR ANSWER: New files only go to new account
+
+N4. Should the system auto-detect which storage account has most free space and use that first?
+    (Intelligent routing — auto-pick least-full bucket for new uploads?)
+    YOUR ANSWER: yes ✅
+
+N5. Multi-key storage — should each R2 / DB account have a label/name in the system?
+    (e.g., "Primary R2", "R2 Account 2 - Media Overflow", "R2 Account 3 - Archive")
+    YOUR ANSWER: choose yourself best one
+
+N6. If one storage account fails or is full — automatic failover to next account?
+    YOUR ANSWER:yes ✅
+
+N7. Should there be a priority/order for storage accounts?
+    (Primary first, then Secondary, then Tertiary — or round-robin load balance?)
+    YOUR ANSWER:choose yourself best one
+
+N8. Should the system support mixing different storage providers?
+    (e.g., Cloudflare R2 + Backblaze B2 + Wasabi in one unified system?)
+    YOUR ANSWER:choose yourself best one (app owner can set the super admin team work for what they can do on desktop app they only see owr work department only not all )
+
+N9. Database multi-account same way — multiple Turso orgs added dynamically?
+    YOUR ANSWER: yes ✅
+
+N10. Should file-to-bucket mapping be stored so you always know which account a file is in?
+     YOUR ANSWER: choose yourself best one
+
+════════════════════════════════════════════════════════════════
+SECTION O — ENVIRONMENT VARIABLES & CONFIG MANAGEMENT
+════════════════════════════════════════════════════════════════
+
+O1. Where should all secrets/keys be stored?
+    (Infisical / AWS Secrets Manager / .env file / Hardcoded — NOT recommended / Unsure?)
+    YOUR ANSWER: Infisical
+
+O2. Should adding a new storage account key be possible without redeploying the backend?
+    (Hot-reload config — system picks up new keys automatically at runtime?)
+    YOUR ANSWER: yes but after verifying key or api working or not✅
+
+O3. Should new env variables auto-propagate to all Worker instances instantly?
+    (e.g., Add R2_KEY_ACCT_3 to Infisical → all Workers use it within seconds?)
+    YOUR ANSWER: yes but after verifying key or api working or not ✅
+
+O4. Separate env configs for dev / staging / production environments?
+    YOUR ANSWER: yes ✅
+
+O5. Should the admin dashboard have a "Config Manager" section?
+    (Add/remove/edit storage accounts from UI without touching Infisical manually?)
+    YOUR ANSWER: yes ✅
+
+O6. Audit log for config changes?
+    (Who added which key, when, from which IP — for security tracking?)
+    YOUR ANSWER: choose yourself best one
+
+O7. Should secret rotation be automated?
+    (Auto-rotate API keys every 30/60/90 days and update everywhere without downtime?)
+    YOUR ANSWER: choose yourself best one
+
+════════════════════════════════════════════════════════════════
+SECTION P — AUTOMATIC SYSTEM UPDATES & UPGRADES
+════════════════════════════════════════════════════════════════
+
+P1. Should the backend auto-update when new storage accounts are added?
+    (Without manual redeployment or code changes?)
+    YOUR ANSWER: choose yourself best one
+
+P2. Should the storage routing logic auto-update across the whole system?
+    (All Workers pick up new storage accounts from central config, not hardcoded?)
+    YOUR ANSWER: choose yourself best one
+
+P3. Should there be a "system health check" that runs automatically?
+    (Auto-ping all storage accounts, DB connections, APIs — and report status?)
+    YOUR ANSWER: all types ✅
+
+
+P4. Auto-retry on storage write failure?
+    (If R2 Account 1 write fails → auto-retry on R2 Account 2 — transparent to user?)
+    YOUR ANSWER: no transparent and choose yourself best one
+
+P5. Auto-scaling storage accounts — when threshold hit, auto-add next account?
+    (If Account 1 hits 90% → system auto-activates Account 2 from the pre-configured list?)
+    YOUR ANSWER: all account defults active 
+
+P6. Zero-downtime upgrades — adding new storage should not interrupt active users?
+    YOUR ANSWER: yes ✅
+
+P7. Changelog / upgrade log visible in admin panel?
+    (Show: "R2 Account 3 activated on May 3 at 2:14 PM — triggered by 90% threshold")
+    YOUR ANSWER: yes ✅
+
+P8. Notification to admin when auto-upgrade happens?
+    (Push / Email / Slack — "System automatically activated new storage account")
+    YOUR ANSWER:yes ✅
+
+P9. Rollback option — if new storage account causes issues, can admin instantly disable it?
+    YOUR ANSWER: yes ✅
+
+P10. Should the config system support future storage types without code changes?
+     (Designed so that tomorrow you can add Backblaze / Wasabi / S3 by just filling a form?)
+     YOUR ANSWER:choose yourself best one
+
+════════════════════════════════════════════════════════════════
+SECTION Q — STORAGE CONFLICT PREVENTION
+════════════════════════════════════════════════════════════════
+
+Q1. When multiple storage accounts are active, how to prevent duplicate file writes?
+    (Central lock / Hash-based routing / Unique file ID system?)
+    YOUR ANSWER: choose yourself best one
+
+Q2. If two users upload same file simultaneously — deduplication?
+    (Store only once / Store separately per user?)
+    YOUR ANSWER:Store separately per user
+
+Q3. File ID uniqueness — globally unique across all storage accounts?
+    YOUR ANSWER: yes ✅
+
+Q4. If a storage account is removed/deactivated — what happens to files in it?
+    (Migrate to active account / Mark as unavailable / Auto-migrate in background?)
+    YOUR ANSWER:files still usable and accessable only for actice users those connected if files sended inside group or chanl then other those users active they can access files and in 2 person in direct maggage and 1 person deleted there account then only 2nd side person can read or access data only if bot users deleted there account then all data can remove permanently and also inside group or chanl all deleted then all text and media or files deleted permanently and clean automatically backend storage )
+
+Q5. Conflict resolution if same file key exists in two accounts?
+    (Primary account wins / Most recent wins / Error thrown?)
+    YOUR ANSWER: choose yourself best one
+
+Q6. Should there be a "storage integrity checker" that verifies all file references are valid?
+    (Periodic scan — find broken links, orphan files, missing files?)
+    YOUR ANSWER: choose yourself best one
+
+════════════════════════════════════════════════════════════════
+SECTION R — ADDITIONAL ADVANCED FEATURES
+════════════════════════════════════════════════════════════════
+
+R1. Multi-language support in app?
+    (English only / Hindi + English / Multiple languages?)
+    YOUR ANSWER: Multiple languages or translter
+
+R2. Dark mode / Light mode / System theme?
+    YOUR ANSWER: all types ✅
+
+
+R3. Message translation feature?
+    (Translate received message to your language?)
+    YOUR ANSWER: yes ✅
+
+R4. Scheduled messages?
+    (Send message at a future time?)
+    YOUR ANSWER: no ❌
+
+R5. Message drafts auto-saved?
+    YOUR ANSWER: yes ✅
+
+R6. Voice message playback speed control? (0.5x / 1x / 1.5x / 2x)
+    YOUR ANSWER: choose yourself best one
+
+R7. Animated sticker support?
+    YOUR ANSWER: telegram sharable link work to transfer sticker packs all easily adding users owner sticker pack sections
+
+R8. In-app camera or use device camera only?
+    YOUR ANSWER: for future upgrade fetures
+
+R9. Link preview in messages?
+    (Show thumbnail + title when someone sends a URL?)
+    YOUR ANSWER: yes ✅
+
+R10. Read receipts — can user turn them off?
+     YOUR ANSWER: yes ✅
+
+R11. "Nearby People" feature — find users geographically close to you?
+     YOUR ANSWER: choose yourself best one
+
+R12. Public bot / chatbot API support like Telegram bots?
+     YOUR ANSWER: for future upgrade fetures
+
+════════════════════════════════════════════════════════════════
+SECTION S — FINAL PRIORITIES
+════════════════════════════════════════════════════════════════
+
+S1. What is the single most important feature that MUST be perfect at launch?
+    YOUR ANSWER: chating / calling 
+(massge can send via if possible via 2g connection if users have weak singles then also they able to send massge easily / calling quality auto fix and make sure try to best quality and encrypition) 
+
+S2. What features can be cut from MVP to ship faster?
+    YOUR ANSWER: choose yourself best one
+
+S3. What is your target launch timeline?
+    (1 month / 3 months / 6 months / 1 year / No deadline?)
+    YOUR ANSWER: within 2 days
+
+S4. Do you have a development team, or building solo?
+    YOUR ANSWER: 2 brother
+
+S5. Any existing competitor you want to specifically beat or be different from?
+    YOUR ANSWER: telegram
+
+S6. Anything else important about PingMe that wasn't covered above?
+    YOUR ANSWER: advance login via passkey google passkey automatic login only and dont confuse on in app owners and admin and the app owner admins or superadmins tean devlopers on there
+
+════════════════════════════════════════════════════════════════
+END OF QUESTIONS
+════════════════════════════════════════════════════════════════
+
+Total Sections  : 19 (A through S)
+Total Questions : 112
+File Version    : 2.0 — PingMe Full Discovery Interview
+
+Fill all answers → save file → send back.
+I will generate your complete PRD + TRD based on your answers.
+════════════════════════════════════════════════════════════════

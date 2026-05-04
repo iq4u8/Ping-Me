@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIRE - Messages</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@700&amp;family=Inter:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "on-primary-fixed": "#2c1600",
+                      "surface-container-highest": "#393430",
+                      "on-tertiary-container": "#1d445d",
+                      "error-container": "#93000a",
+                      "surface-container": "#231f1b",
+                      "primary": "#f2be8c",
+                      "on-primary-container": "#5b3912",
+                      "secondary-container": "#474746",
+                      "surface-container-high": "#2e2925",
+                      "primary-fixed": "#ffdcbd",
+                      "on-surface": "#eae1db",
+                      "surface-dim": "#17130f",
+                      "on-tertiary-fixed": "#001e2f",
+                      "primary-fixed-dim": "#f0bd8b",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "inverse-surface": "#eae1db",
+                      "surface-container-lowest": "#110d0a",
+                      "on-secondary": "#303030",
+                      "on-primary-fixed-variant": "#623f18",
+                      "on-secondary-container": "#b6b5b4",
+                      "on-error-container": "#ffdad6",
+                      "surface-variant": "#393430",
+                      "tertiary-container": "#8cb1ce",
+                      "tertiary-fixed-dim": "#a6cbe9",
+                      "tertiary-fixed": "#c9e6ff",
+                      "on-tertiary-fixed-variant": "#244a63",
+                      "secondary": "#c8c6c5",
+                      "surface-tint": "#f0bd8b",
+                      "inverse-on-surface": "#342f2c",
+                      "on-surface-variant": "#d4c4b7",
+                      "on-tertiary": "#06344c",
+                      "surface": "#17130f",
+                      "surface-bright": "#3d3834",
+                      "on-primary": "#482904",
+                      "on-error": "#690005",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "on-background": "#eae1db",
+                      "inverse-primary": "#7d562d",
+                      "outline-variant": "#50453b",
+                      "outline": "#9c8e82",
+                      "background": "#17130f",
+                      "primary-container": "#d4a373",
+                      "tertiary": "#a7ccea",
+                      "secondary-fixed": "#e4e2e1",
+                      "surface-container-low": "#1f1b17",
+                      "on-secondary-fixed-variant": "#474746"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "container-padding": "24px",
+                      "xs": "4px",
+                      "xl": "40px"
+              },
+              "fontFamily": {
+                      "data-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "h2": [
+                              "Space Grotesk"
+                      ],
+                      "body-s": [
+                              "Inter"
+                      ],
+                      "body-m": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "h3": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "data-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-s": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-m": [
+                              "15px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h3": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row antialiased">
+<!-- TopAppBar (Mobile) / SideNav (Desktop) equivalent conceptually, implementing TopAppBar from JSON -->
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-6 h-16 bg-zinc-950 text-yellow-600 font-space-grotesk font-bold uppercase tracking-widest border-b border-zinc-800 flat no-shadows md:hidden sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2 rounded-none">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="text-xl font-black text-white tracking-tighter">WIRE</span>
+</div>
+<button class="flex items-center justify-center hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2 rounded-none">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<!-- Side Nav (Desktop) -->
+<aside class="hidden md:flex flex-col w-64 border-r border-[#2A2A2A] h-screen sticky top-0 bg-background flex-shrink-0">
+<div class="h-16 flex items-center px-6 border-b border-[#2A2A2A]">
+<span class="font-h1 text-h1 tracking-tighter text-on-background">WIRE</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-unit">
+<li>
+<a class="flex items-center gap-3 px-6 py-3 bg-[#141414] border-r-2 border-primary-container text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">CHATS</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-secondary hover:bg-[#141414] transition-colors" href="#">
+<span class="material-symbols-outlined">call</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">CALLS</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-secondary hover:bg-[#141414] transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">PEOPLE</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-secondary hover:bg-[#141414] transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">SETTINGS</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-h-0 relative pb-16 md:pb-0">
+<!-- Desktop Header -->
+<header class="hidden md:flex items-center justify-between px-6 h-16 border-b border-[#2A2A2A] bg-background sticky top-0 z-30">
+<h1 class="font-h2 text-h2 uppercase">MESSAGES</h1>
+<div class="relative">
+<input class="bg-[#141414] border border-[#2A2A2A] text-on-background font-body-s text-body-s px-4 py-2 w-64 focus:outline-none focus:border-primary-container transition-colors rounded-none placeholder:text-secondary" placeholder="SEARCH..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">search</span>
+</div>
+</header>
+<!-- Chat List -->
+<div class="flex-1 overflow-y-auto bg-background">
+<!-- Chat Row 1 (Unread) -->
+<a class="flex items-stretch border-b border-[#2A2A2A] hover:bg-[#141414] transition-colors group cursor-pointer" href="#">
+<div class="p-4 flex items-center justify-center">
+<div class="relative w-12 h-12">
+<img alt="Avatar" class="w-full h-full object-cover rounded-DEFAULT" data-alt="A stark, high-contrast portrait of a person in black and white photography, resembling a security badge photo. The lighting is harsh and direct, creating deep shadows. The background is a solid, impenetrable black, emphasizing the minimalist, utilitarian aesthetic of the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH0evGcLAtkTWj_-e5R6HXO_TfRqtLN-WdgPlu7_2Cf3m4HGqfJ4OlP2-UmYtJDRjmF9j_OpI3OZOhc2LgjBKs5V90ilueJzmrZH8TB_yZaRU1g0-iNMoSiPO3B_NhyCJkbFcFs2eEjIXDYttZxvLWlNW_gDf8u3tHEYWoTpekKdW5I-9LpJ9N3MTI3uONFcUBCoFOabZE5L7rEF8Um6WhuKhRe2X9OniROKLuY9FnJhgcE6zts4ROWH-mcKKE5Kiyr14d5M2l6pbV"/>
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-primary-container border-2 border-background rounded-none"></div>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center py-3 pr-4">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-m text-body-m text-on-background truncate">ALEXA CHEN</span>
+<span class="font-data-mono text-data-mono text-primary-container">14:02</span>
+</div>
+<div class="flex justify-between items-center gap-4">
+<p class="font-body-s text-body-s text-on-background truncate">Acknowledged. Commencing deployment sequence now.</p>
+<div class="bg-primary-container text-[#0A0A0A] font-data-mono text-data-mono px-2 py-0.5 rounded-none shrink-0">3</div>
+</div>
+</div>
+</a>
+<!-- Chat Row 2 -->
+<a class="flex items-stretch border-b border-[#2A2A2A] hover:bg-[#141414] transition-colors group cursor-pointer" href="#">
+<div class="p-4 flex items-center justify-center">
+<div class="relative w-12 h-12">
+<div class="w-full h-full bg-[#2A2A2A] rounded-DEFAULT flex items-center justify-center font-h3 text-h3 text-secondary">
+                            SYS
+                        </div>
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-[#474746] border-2 border-background rounded-none"></div>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center py-3 pr-4">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-m text-body-m text-secondary truncate">SYSTEM_ALERTS</span>
+<span class="font-data-mono text-data-mono text-secondary">09:15</span>
+</div>
+<div class="flex justify-between items-center gap-4">
+<p class="font-body-s text-body-s text-secondary truncate">Node 4 offline. Attempting automated restart.</p>
+</div>
+</div>
+</a>
+<!-- Chat Row 3 -->
+<a class="flex items-stretch border-b border-[#2A2A2A] hover:bg-[#141414] transition-colors group cursor-pointer" href="#">
+<div class="p-4 flex items-center justify-center">
+<div class="relative w-12 h-12">
+<img alt="Avatar" class="w-full h-full object-cover rounded-DEFAULT grayscale opacity-80" data-alt="A minimalist, monochromatic portrait of a man, severely cropped to resemble an ID photo. The image is rendered in grayscale, aligning with the strict, functionalist aesthetic. The background is completely dark, devoid of any organic elements or distractions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_8F3wnM9eOTQqKKL8LhhX-6LtN-AupFZlswbyaQvLDJ4Zm1lTsoLArWW6EiMYcTNA9is8Z29J3ensjOz3dLC5GFjbmHKwSpqqy1dacTa7CIodEV8Bm-FuVVhtnbwODYt3_Lv33qhuteJvc_nGA9LcjewaEnAvVWi4vx35qQQdZK4xhErX_2JGMP4ssbr2V9y0gIutzvfmOmNykxgPKCstr-jO8YzQ6xVRy6E0ib8Sth3BLTogUa4GjsOy3XxcybcKEN7EhpW09AwP"/>
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-primary-container border-2 border-background rounded-none"></div>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center py-3 pr-4">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-m text-body-m text-on-background truncate">MARCUS V.</span>
+<span class="font-data-mono text-data-mono text-secondary">YEST</span>
+</div>
+<div class="flex justify-between items-center gap-4">
+<p class="font-body-s text-body-s text-secondary truncate">Coordinates received. Standby for confirmation.</p>
+</div>
+</div>
+</a>
+<!-- Chat Row 4 (Unread) -->
+<a class="flex items-stretch border-b border-[#2A2A2A] hover:bg-[#141414] transition-colors group cursor-pointer" href="#">
+<div class="p-4 flex items-center justify-center">
+<div class="relative w-12 h-12">
+<div class="w-full h-full bg-[#141414] border border-[#2A2A2A] rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">group</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-[#474746] border-2 border-background rounded-none"></div>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center py-3 pr-4">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-body-m text-body-m text-on-background truncate">OPS_TEAM_ALPHA</span>
+<span class="font-data-mono text-data-mono text-primary-container">TUE</span>
+</div>
+<div class="flex justify-between items-center gap-4">
+<p class="font-body-s text-body-s text-on-background truncate"><span class="text-secondary mr-2">S.Kim:</span> Status report required by 0800 hours.</p>
+<div class="bg-primary-container text-[#0A0A0A] font-data-mono text-data-mono px-2 py-0.5 rounded-none shrink-0">12</div>
+</div>
+</div>
+</a>
+</div>
+<!-- FAB -->
+<button class="fixed bottom-24 md:bottom-8 right-6 w-14 h-14 bg-primary-container text-[#0A0A0A] flex items-center justify-center rounded-none hover:bg-primary transition-colors active:bg-primary-fixed z-30">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 bg-zinc-950 font-mono text-[10px] uppercase tracking-widest border-t border-zinc-800 flat no-shadows md:hidden">
+<a class="flex flex-col items-center justify-center text-yellow-600 bg-zinc-900 border-t-2 border-yellow-600 h-full w-full transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span>CHATS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">call</span>
+<span>CALLS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span>PEOPLE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span>SETTINGS</span>
+</a>
+</nav>
+</body></html>

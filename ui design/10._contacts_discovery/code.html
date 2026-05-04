@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIRE - Contacts &amp; Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&amp;family=Space+Grotesk:wght@700&amp;family=Inter:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#2c1600",
+                        "surface-container-highest": "#393430",
+                        "on-tertiary-container": "#1d445d",
+                        "error-container": "#93000a",
+                        "surface-container": "#231f1b",
+                        "primary": "#f2be8c",
+                        "on-primary-container": "#5b3912",
+                        "secondary-container": "#474746",
+                        "surface-container-high": "#2e2925",
+                        "primary-fixed": "#ffdcbd",
+                        "on-surface": "#eae1db",
+                        "surface-dim": "#17130f",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary-fixed-dim": "#f0bd8b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#eae1db",
+                        "surface-container-lowest": "#110d0a",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#623f18",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#393430",
+                        "tertiary-container": "#8cb1ce",
+                        "tertiary-fixed-dim": "#a6cbe9",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#244a63",
+                        "secondary": "#c8c6c5",
+                        "surface-tint": "#f0bd8b",
+                        "inverse-on-surface": "#342f2c",
+                        "on-surface-variant": "#d4c4b7",
+                        "on-tertiary": "#06344c",
+                        "surface": "#17130f",
+                        "surface-bright": "#3d3834",
+                        "on-primary": "#482904",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#eae1db",
+                        "inverse-primary": "#7d562d",
+                        "outline-variant": "#50453b",
+                        "outline": "#9c8e82",
+                        "background": "#17130f",
+                        "primary-container": "#d4a373",
+                        "tertiary": "#a7ccea",
+                        "secondary-fixed": "#e4e2e1",
+                        "surface-container-low": "#1f1b17",
+                        "on-secondary-fixed-variant": "#474746"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "h2": ["Space Grotesk"],
+                        "body-s": ["Inter"],
+                        "body-m": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-s": ["13px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-m": ["15px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "h3": ["18px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0A0A; color: #eae1db; }
+        .grid-bg {
+            background-size: 24px 24px;
+            background-image: linear-gradient(to right, #141414 1px, transparent 1px), linear-gradient(to bottom, #141414 1px, transparent 1px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-m text-body-m antialiased flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-zinc-950 font-space-grotesk font-bold uppercase tracking-widest full-width top-0 border-b border-b border-zinc-800 flat no-shadows flex justify-between items-center w-full px-6 h-16 shrink-0 sticky z-40">
+<button aria-label="Menu" class="text-zinc-500 hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2 -ml-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="text-xl font-black text-white tracking-tighter">WIRE</div>
+<button aria-label="Search" class="text-zinc-500 hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2 -mr-2">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col md:flex-row relative z-10 w-full max-w-7xl mx-auto border-x border-[#2A2A2A] bg-[#0A0A0A] pb-24 md:pb-0">
+<!-- Search & Discovery Column -->
+<section class="w-full md:w-1/2 lg:w-5/12 border-b md:border-b-0 md:border-r border-[#2A2A2A] flex flex-col h-auto md:h-[calc(100vh-64px)] overflow-y-auto">
+<!-- Search Header -->
+<div class="p-lg border-b border-[#2A2A2A] bg-[#141414]">
+<h1 class="font-h1 text-h1 text-on-surface mb-md">DISCOVER</h1>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#2A2A2A] group-focus-within:text-primary-container" data-icon="search">search</span>
+<input class="w-full bg-[#141414] border border-[#2A2A2A] text-on-surface font-body-m text-body-m px-10 py-3 focus:outline-none focus:border-primary-container focus:ring-0 placeholder:text-[#474746] rounded-none transition-colors" placeholder="SEARCH BY ID OR @USERNAME" type="text"/>
+</div>
+</div>
+<!-- Suggested Contacts -->
+<div class="p-lg pb-sm">
+<h2 class="font-label-caps text-label-caps text-[#474746] mb-md">SUGGESTED NODES</h2>
+</div>
+<div class="flex flex-col">
+<!-- Contact Row 1 -->
+<div class="flex items-center justify-between px-lg py-md border-b border-[#2A2A2A] hover:bg-[#141414] transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-[#2A2A2A] flex items-center justify-center relative overflow-hidden">
+<span class="font-data-mono text-data-mono text-[#E8E6E3]">A1</span>
+</div>
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">Alex Mercer</span>
+<span class="font-data-mono text-data-mono text-[#474746]">@amercer_01</span>
+</div>
+</div>
+<button class="bg-transparent border border-[#2A2A2A] text-on-surface font-label-caps text-label-caps px-4 py-2 hover:border-primary-container hover:text-primary-container transition-colors focus:outline-none focus:ring-1 focus:ring-primary-container">
+                        ADD
+                    </button>
+</div>
+<!-- Contact Row 2 -->
+<div class="flex items-center justify-between px-lg py-md border-b border-[#2A2A2A] hover:bg-[#141414] transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-[#2A2A2A] flex items-center justify-center relative overflow-hidden">
+<img alt="Profile" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity" data-alt="A stark, high-contrast monochrome portrait of a person. The lighting is harsh and industrial, creating deep shadows and bright highlights. The style is reminiscent of surveillance footage or a technical dossier. The overall mood is cold, objective, and detached, fitting a mid-century functionalist aesthetic. The image is framed tightly on the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9KFKqug_r88LlPSLNxMlMchEsXF6nRdOuO0QVsAxPHaMo2NoZP4Ge-8xQLVT5JNMhpmzPTwdch1Zt_R3-SSGhYcZcN9lFBazrUJ_Yb7KlfhN3Zn4yJj6t_7tk1KEUTbv98v1xVdcStk-pNm5PC3jBwiTsH57xtFQoUB9RWdGn2b-oJ9JR1EUsJcjF45zpF_e8QvlNcMia550TX2tpQDrA2N0EvHvWhWJ0mh9EnSnrDs6wCwbtYtjDln9Klwsl8laXIEcSOUfYmWPN"/>
+</div>
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">Sarah Chen</span>
+<span class="font-data-mono text-data-mono text-[#474746]">@schen.sys</span>
+</div>
+</div>
+<button class="bg-transparent border border-[#2A2A2A] text-on-surface font-label-caps text-label-caps px-4 py-2 hover:border-primary-container hover:text-primary-container transition-colors focus:outline-none focus:ring-1 focus:ring-primary-container">
+                        ADD
+                    </button>
+</div>
+<!-- Contact Row 3 -->
+<div class="flex items-center justify-between px-lg py-md border-b border-[#2A2A2A] hover:bg-[#141414] transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-[#2A2A2A] flex items-center justify-center relative overflow-hidden">
+<span class="font-data-mono text-data-mono text-[#E8E6E3]">X9</span>
+</div>
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-on-surface">Unit 9</span>
+<span class="font-data-mono text-data-mono text-[#474746]">@unit_09_auth</span>
+</div>
+</div>
+<button class="bg-transparent border border-[#2A2A2A] text-on-surface font-label-caps text-label-caps px-4 py-2 hover:border-primary-container hover:text-primary-container transition-colors focus:outline-none focus:ring-1 focus:ring-primary-container">
+                        ADD
+                    </button>
+</div>
+</div>
+</section>
+<!-- Result / Detail Panel -->
+<section class="w-full md:w-1/2 lg:w-7/12 bg-[#141414] flex flex-col h-auto md:h-[calc(100vh-64px)] relative overflow-hidden">
+<div class="grid-bg absolute inset-0 opacity-50 pointer-events-none"></div>
+<div class="flex-grow flex flex-col items-center justify-center p-xl relative z-10 text-center">
+<!-- Large ID Display -->
+<div class="mb-xl flex flex-col items-center">
+<div class="w-32 h-32 border border-primary-container mb-lg flex items-center justify-center bg-[#0A0A0A] relative overflow-hidden">
+<img alt="Result Profile" class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-90" data-alt="A stark, high-contrast monochrome portrait of a person. The lighting is harsh and industrial, creating deep shadows and bright highlights. The style is reminiscent of surveillance footage or a technical dossier. The overall mood is cold, objective, and detached, fitting a mid-century functionalist aesthetic. The image is framed tightly on the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVHpGXlHyrZ2vrpgWVWros_aYFN0DDNCpyRlKKb-MmDWgNxEdhXj2bOU2HkjzlgtIL5ShKriq7K6PXG0hzahwktJD3VK5jBSHYhfo5URpO-AF_I_9QpsP_FLcyPk9hFzzj9z6WNMXx8K3Odj1Y3Ve5poBZ2TMss9sSvzAzIJbVdh0oRYKHVuiY_61Pz3ifjhMq4ii9E4m5HxuvKOoFkKIw19j6JNGVMiydDHj1B5bSZC7HSeB6XmtWSPIKNkm7UXjvWfFDr3cNbJH4"/>
+<div class="absolute inset-0 border-[4px] border-[#0A0A0A] pointer-events-none"></div>
+</div>
+<h2 class="font-h1 text-h1 text-on-surface mb-xs">MARCUS V.</h2>
+<span class="font-data-mono text-data-mono text-primary-container bg-[#2A2A2A] px-2 py-1 uppercase">ID: 8492-X-11</span>
+</div>
+<!-- Metrics / Data Points -->
+<div class="w-full max-w-sm border border-[#2A2A2A] bg-[#0A0A0A] mb-xl flex divide-x divide-[#2A2A2A]">
+<div class="flex-1 p-md flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-[#474746] mb-xs">STATUS</span>
+<span class="font-data-mono text-data-mono text-on-surface">ACTIVE</span>
+</div>
+<div class="flex-1 p-md flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-[#474746] mb-xs">ZONE</span>
+<span class="font-data-mono text-data-mono text-on-surface">SEC-4</span>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="bg-primary-container text-[#0A0A0A] font-label-caps text-label-caps px-8 py-4 hover:bg-surface-tint transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-[#141414] w-full max-w-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="send" style="font-size: 16px;">send</span>
+                    SEND REQUEST
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-zinc-950 font-mono text-[10px] uppercase tracking-widest docked full-width bottom-0 border-t border-t border-zinc-800 flat no-shadows fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95 group" href="#">
+<span class="material-symbols-outlined mb-1 group-active:text-yellow-600" data-icon="chat_bubble">chat_bubble</span>
+<span class="group-active:text-yellow-600">CHATS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95 group" href="#">
+<span class="material-symbols-outlined mb-1 group-active:text-yellow-600" data-icon="call">call</span>
+<span class="group-active:text-yellow-600">CALLS</span>
+</a>
+<a aria-current="page" class="flex flex-col items-center justify-center text-yellow-600 bg-zinc-900 border-t-2 border-yellow-600 h-full w-full transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="group" data-weight="fill" style="font-variation-settings: 'FILL' 1;">group</span>
+<span>PEOPLE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95 group" href="#">
+<span class="material-symbols-outlined mb-1 group-active:text-yellow-600" data-icon="settings">settings</span>
+<span class="group-active:text-yellow-600">SETTINGS</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIRE - IDENTIFY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#2c1600",
+                        "surface-container-highest": "#393430",
+                        "on-tertiary-container": "#1d445d",
+                        "error-container": "#93000a",
+                        "surface-container": "#231f1b",
+                        "primary": "#f2be8c",
+                        "on-primary-container": "#5b3912",
+                        "secondary-container": "#474746",
+                        "surface-container-high": "#2e2925",
+                        "primary-fixed": "#ffdcbd",
+                        "on-surface": "#eae1db",
+                        "surface-dim": "#17130f",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary-fixed-dim": "#f0bd8b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#eae1db",
+                        "surface-container-lowest": "#110d0a",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#623f18",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#393430",
+                        "tertiary-container": "#8cb1ce",
+                        "tertiary-fixed-dim": "#a6cbe9",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#244a63",
+                        "secondary": "#c8c6c5",
+                        "surface-tint": "#f0bd8b",
+                        "inverse-on-surface": "#342f2c",
+                        "on-surface-variant": "#d4c4b7",
+                        "on-tertiary": "#06344c",
+                        "surface": "#17130f",
+                        "surface-bright": "#3d3834",
+                        "on-primary": "#482904",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#eae1db",
+                        "inverse-primary": "#7d562d",
+                        "outline-variant": "#50453b",
+                        "outline": "#9c8e82",
+                        "background": "#17130f",
+                        "primary-container": "#d4a373",
+                        "tertiary": "#a7ccea",
+                        "secondary-fixed": "#e4e2e1",
+                        "surface-container-low": "#1f1b17",
+                        "on-secondary-fixed-variant": "#474746"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "h2": ["Space Grotesk"],
+                        "body-s": ["Inter"],
+                        "body-m": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-s": ["13px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-m": ["15px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "h3": ["18px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #eae1db;
+        }
+        .border-technical {
+            border-color: #2A2A2A;
+        }
+        .bg-level-1 {
+            background-color: #141414;
+        }
+        .focus-ochre:focus-within {
+            border-color: #D4A373;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 antialiased selection:bg-primary-container selection:text-background">
+<!-- Main Container -->
+<main class="w-full max-w-md bg-level-1 border border-technical relative overflow-hidden flex flex-col" style="border-radius: 0px;">
+<!-- Header Area -->
+<div class="px-6 py-8 border-b border-technical bg-[#0A0A0A]">
+<h1 class="font-h1 text-h1 text-on-surface tracking-tighter uppercase mb-2">WIRE</h1>
+<h2 class="font-h2 text-h2 text-surface-variant uppercase">Identify</h2>
+</div>
+<!-- Content Canvas -->
+<div class="p-6 flex-1 flex flex-col gap-8">
+<p class="font-body-m text-body-m text-on-surface-variant max-w-[280px]">
+                Enter your mobile number to authenticate. A verification code will be dispatched.
+            </p>
+<div class="flex flex-col gap-6">
+<!-- Country Code Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase">Country Code</label>
+<div class="flex items-center border-b border-technical focus-ochre transition-colors duration-150 pb-2">
+<span class="font-data-mono text-data-mono text-on-surface-variant mr-2">+</span>
+<input aria-label="Country Code" class="w-full bg-transparent border-none p-0 font-data-mono text-data-mono text-on-surface focus:ring-0 placeholder:text-surface-variant" placeholder="00" type="text" value="1"/>
+</div>
+</div>
+<!-- Phone Number Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase">Mobile Number</label>
+<div class="flex items-center border-b border-technical focus-ochre transition-colors duration-150 pb-2">
+<input aria-label="Mobile Number" class="w-full bg-transparent border-none p-0 font-data-mono text-data-mono text-on-surface focus:ring-0 placeholder:text-surface-variant tracking-wider" placeholder="000 000 0000" type="tel"/>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-4 pt-6 border-t border-technical">
+<button class="w-full bg-primary-container hover:bg-primary-fixed-dim text-[#0A0A0A] font-label-caps text-label-caps py-4 uppercase tracking-widest transition-colors duration-150 flex items-center justify-center gap-2" style="border-radius: 0px;">
+                    Continue
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Subtle Footer/System Info -->
+<div class="px-6 py-4 bg-[#0A0A0A] border-t border-technical flex justify-between items-center opacity-50">
+<span class="font-data-mono text-[10px] uppercase tracking-widest text-on-surface-variant">SYS_AUTH_01</span>
+<span class="font-data-mono text-[10px] uppercase tracking-widest text-on-surface-variant">SECURE</span>
+</div>
+</main>
+</body></html>

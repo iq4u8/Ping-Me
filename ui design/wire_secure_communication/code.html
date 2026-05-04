@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIRE - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#2c1600",
+                        "surface-container-highest": "#393430",
+                        "on-tertiary-container": "#1d445d",
+                        "error-container": "#93000a",
+                        "surface-container": "#231f1b",
+                        "primary": "#f2be8c",
+                        "on-primary-container": "#5b3912",
+                        "secondary-container": "#474746",
+                        "surface-container-high": "#2e2925",
+                        "primary-fixed": "#ffdcbd",
+                        "on-surface": "#eae1db",
+                        "surface-dim": "#17130f",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary-fixed-dim": "#f0bd8b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#eae1db",
+                        "surface-container-lowest": "#110d0a",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#623f18",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#393430",
+                        "tertiary-container": "#8cb1ce",
+                        "tertiary-fixed-dim": "#a6cbe9",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#244a63",
+                        "secondary": "#c8c6c5",
+                        "surface-tint": "#f0bd8b",
+                        "inverse-on-surface": "#342f2c",
+                        "on-surface-variant": "#d4c4b7",
+                        "on-tertiary": "#06344c",
+                        "surface": "#17130f",
+                        "surface-bright": "#3d3834",
+                        "on-primary": "#482904",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#eae1db",
+                        "inverse-primary": "#7d562d",
+                        "outline-variant": "#50453b",
+                        "outline": "#9c8e82",
+                        "background": "#17130f",
+                        "primary-container": "#d4a373",
+                        "tertiary": "#a7ccea",
+                        "secondary-fixed": "#e4e2e1",
+                        "surface-container-low": "#1f1b17",
+                        "on-secondary-fixed-variant": "#474746"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "h2": ["Space Grotesk"],
+                        "body-s": ["Inter"],
+                        "body-m": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", {"lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h2": ["24px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-s": ["13px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500"}],
+                        "body-m": ["15px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "500"}],
+                        "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "h3": ["18px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0A0A0A; /* Level 0 Background */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen flex flex-col justify-between p-container-padding antialiased">
+<!-- Header / Brand -->
+<header class="pt-xl w-full flex justify-center items-center relative">
+<h1 class="font-data-mono text-[48px] tracking-widest text-on-surface uppercase font-bold text-center">WIRE</h1>
+</header>
+<!-- Main Content / Slides (Simulated Slide 1) -->
+<main class="flex-grow flex flex-col justify-center items-start w-full max-w-md mx-auto relative z-10 px-md">
+<!-- Image Canvas (Abstract representation of communication/instrument) -->
+<div class="w-full aspect-square mb-xl border border-secondary-container bg-surface flex items-center justify-center overflow-hidden" style="border-radius: 4px;">
+<img alt="Abstract technical data flow" class="w-full h-full object-cover opacity-80 mix-blend-luminosity" data-alt="A stark, high-contrast abstract visualization of digital data flow and communication arrays. Monochromatic black and dark gray tones dominate, punctuated by razor-thin, precise geometric lines in muted ochre and stark white. The image reflects a professional, instrument-grade aesthetic, reminiscent of an advanced terminal or schematic interface, free of organic shapes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE0YsD6EUkaz8v5ouEGuTMpvApb3uPri2em9Yki1R1Lgslu5VyhS2KMSZUymVHKnxNkC7-GZttEa6sN7k3PShxpQ-knLi2kGwiCoQaUv5JkwhlbDEYRJGWbuP3xLNxPZn25MG2HcS3Jj2c204zrg221cUlfoEAIh3Afi9lbec8TR-NQBMpTREIdjt62ZlmQBxGvzKlfmU3z0AJG51ulzDTfMjjGnt4FZteVCwq44U-dM4X3Z2dH01LEwPtsseOpUb-FtXn-o4-_taU"/>
+</div>
+<!-- Headline & Copy -->
+<div class="space-y-md">
+<h2 class="font-h1 text-h1 text-on-surface uppercase">SECURE DIRECT LINE</h2>
+<p class="font-body-m text-body-m text-on-surface-variant max-w-[90%] leading-relaxed">
+                Establish an encrypted, objective connection. No algorithmic interference. Pure signal. 
+                Configure your transmission parameters directly.
+            </p>
+</div>
+</main>
+<!-- Footer Controls -->
+<footer class="w-full max-w-md mx-auto space-y-lg pb-lg">
+<!-- Progress Indicators -->
+<div class="flex items-center gap-xs w-full px-md">
+<div class="h-[1px] flex-grow bg-primary-container"></div>
+<div class="h-[1px] flex-grow bg-secondary-container"></div>
+<div class="h-[1px] flex-grow bg-secondary-container"></div>
+</div>
+<!-- Action Button -->
+<div class="px-md">
+<button class="w-full bg-primary-container text-surface-container-lowest font-data-mono text-data-mono uppercase py-md border border-primary-container hover:bg-surface-container-lowest hover:text-primary-container transition-colors duration-150 flex items-center justify-center gap-sm" style="border-radius: 4px;">
+                ENTER <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</footer>
+</body></html>

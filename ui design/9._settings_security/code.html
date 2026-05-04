@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIRE - Settings &amp; Security</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#2c1600",
+                        "surface-container-highest": "#393430",
+                        "on-tertiary-container": "#1d445d",
+                        "error-container": "#93000a",
+                        "surface-container": "#231f1b",
+                        "primary": "#f2be8c",
+                        "on-primary-container": "#5b3912",
+                        "secondary-container": "#474746",
+                        "surface-container-high": "#2e2925",
+                        "primary-fixed": "#ffdcbd",
+                        "on-surface": "#eae1db",
+                        "surface-dim": "#17130f",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary-fixed-dim": "#f0bd8b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#eae1db",
+                        "surface-container-lowest": "#110d0a",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#623f18",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#393430",
+                        "tertiary-container": "#8cb1ce",
+                        "tertiary-fixed-dim": "#a6cbe9",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#244a63",
+                        "secondary": "#c8c6c5",
+                        "surface-tint": "#f0bd8b",
+                        "inverse-on-surface": "#342f2c",
+                        "on-surface-variant": "#d4c4b7",
+                        "on-tertiary": "#06344c",
+                        "surface": "#17130f",
+                        "surface-bright": "#3d3834",
+                        "on-primary": "#482904",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#eae1db",
+                        "inverse-primary": "#7d562d",
+                        "outline-variant": "#50453b",
+                        "outline": "#9c8e82",
+                        "background": "#17130f",
+                        "primary-container": "#d4a373",
+                        "tertiary": "#a7ccea",
+                        "secondary-fixed": "#e4e2e1",
+                        "surface-container-low": "#1f1b17",
+                        "on-secondary-fixed-variant": "#474746"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "h2": ["Space Grotesk"],
+                        "body-s": ["Inter"],
+                        "body-m": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-s": ["13px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-m": ["15px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "h3": ["18px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0A0A; color: #eae1db; }
+        .grid-bg { background-image: linear-gradient(#2A2A2A 1px, transparent 1px), linear-gradient(90deg, #2A2A2A 1px, transparent 1px); background-size: 24px 24px; background-position: -1px -1px; opacity: 0.2; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+<div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
+<!-- TopAppBar -->
+<header class="bg-zinc-950 font-space-grotesk font-bold uppercase tracking-widest flex justify-between items-center w-full px-6 h-16 border-b border-zinc-800 z-50 relative">
+<div class="flex items-center gap-4">
+<button class="text-zinc-500 hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2">
+<span class="material-symbols-outlined text-24px">menu</span>
+</button>
+<span class="text-xl font-black text-white tracking-tighter">WIRE</span>
+</div>
+<button class="text-zinc-500 hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2">
+<span class="material-symbols-outlined text-24px">search</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow z-10 p-md md:p-lg pb-32 max-w-[800px] w-full mx-auto flex flex-col gap-lg">
+<!-- Header Section -->
+<section class="flex flex-col gap-sm pt-md">
+<h1 class="font-h1 text-h1 text-on-surface">Settings &amp; Security</h1>
+<p class="font-data-mono text-data-mono text-secondary">ID: 4X99-W-ALFA</p>
+</section>
+<!-- SECURITY PROTOCOLS -->
+<section class="flex flex-col">
+<div class="font-label-caps text-label-caps text-secondary mb-xs px-unit">SECURITY PROTOCOLS</div>
+<div class="bg-[#141414] border border-[#2A2A2A] flex flex-col">
+<!-- Setting Row -->
+<div class="flex justify-between items-center p-md border-b border-[#2A2A2A] hover:bg-[#1A1A1A] transition-colors">
+<span class="font-body-m text-body-m text-on-surface">End-to-End Encryption</span>
+<div class="w-10 h-5 bg-primary-container border border-primary-container flex items-center justify-end p-unit cursor-pointer">
+<div class="w-3 h-3 bg-[#0A0A0A]"></div>
+</div>
+</div>
+<!-- Setting Row -->
+<div class="flex justify-between items-center p-md border-b border-[#2A2A2A] hover:bg-[#1A1A1A] transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-body-m text-body-m text-on-surface">Self-Destruct Timer</span>
+<span class="font-data-mono text-data-mono text-secondary">ACTIVE</span>
+</div>
+<span class="font-data-mono text-data-mono text-on-surface">24H</span>
+</div>
+<!-- Setting Row -->
+<div class="flex justify-between items-center p-md hover:bg-[#1A1A1A] transition-colors">
+<span class="font-body-m text-body-m text-on-surface">Screen Protection</span>
+<div class="w-10 h-5 bg-transparent border border-[#2A2A2A] flex items-center justify-start p-unit cursor-pointer">
+<div class="w-3 h-3 bg-[#2A2A2A]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- NETWORK DIAGNOSTICS -->
+<section class="flex flex-col mt-md">
+<div class="font-label-caps text-label-caps text-secondary mb-xs px-unit">NETWORK DIAGNOSTICS</div>
+<div class="bg-[#141414] border border-[#2A2A2A] flex flex-col">
+<div class="p-md border-b border-[#2A2A2A]">
+<div class="flex justify-between items-start mb-unit">
+<span class="font-body-m text-body-m text-on-surface">Relay Node</span>
+<span class="font-data-mono text-data-mono text-primary-container">CONNECTED</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-data-mono text-data-mono text-secondary">IP</span>
+<span class="font-data-mono text-data-mono text-on-surface">192.168.1.104</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-unit">
+<span class="font-body-m text-body-m text-on-surface">Port Status</span>
+<span class="font-data-mono text-data-mono text-secondary">SECURE</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-data-mono text-data-mono text-secondary">LATENCY</span>
+<span class="font-data-mono text-data-mono text-on-surface">12ms</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ACTIVE SESSIONS -->
+<section class="flex flex-col mt-md">
+<div class="font-label-caps text-label-caps text-secondary mb-xs px-unit">ACTIVE SESSIONS</div>
+<div class="bg-[#141414] border border-[#2A2A2A] flex flex-col">
+<div class="p-md border-b border-[#2A2A2A] hover:bg-[#1A1A1A] transition-colors flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="font-body-m text-body-m text-on-surface">Current Device</span>
+<span class="font-data-mono text-data-mono text-secondary">IP: 192.168.1.104</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary-container bg-[#2A2A2A] px-2 py-1">ACTIVE</span>
+</div>
+<div class="p-md border-b border-[#2A2A2A] hover:bg-[#1A1A1A] transition-colors flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="font-body-m text-body-m text-on-surface">Unknown Terminal</span>
+<span class="font-data-mono text-data-mono text-secondary">IP: 45.33.22.1</span>
+</div>
+<button class="bg-transparent border border-error text-error font-label-caps text-label-caps px-md py-sm hover:bg-error/10 transition-colors">TERMINATE</button>
+</div>
+</div>
+</section>
+<!-- SYSTEM ACTIONS -->
+<section class="flex flex-col mt-md gap-sm">
+<button class="w-full bg-[#141414] border border-[#2A2A2A] text-on-surface font-label-caps text-label-caps p-md hover:bg-[#1A1A1A] transition-colors flex justify-between items-center">
+<span>EXPORT LOGS</span>
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="w-full bg-transparent border border-error text-error font-label-caps text-label-caps p-md hover:bg-error/10 transition-colors flex justify-center items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<span>INITIATE WIPEOUT</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 bg-zinc-950 border-t border-zinc-800 md:hidden">
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined text-24px mb-1">chat_bubble</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">CHATS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined text-24px mb-1">call</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">CALLS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined text-24px mb-1">group</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">PEOPLE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-yellow-600 bg-zinc-900 border-t-2 border-yellow-600 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined text-24px mb-1" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">SETTINGS</span>
+</a>
+</nav>
+</body></html>

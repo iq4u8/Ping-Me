@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIRE - Your ID</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#2c1600",
+                        "surface-container-highest": "#393430",
+                        "on-tertiary-container": "#1d445d",
+                        "error-container": "#93000a",
+                        "surface-container": "#231f1b",
+                        "primary": "#f2be8c",
+                        "on-primary-container": "#5b3912",
+                        "secondary-container": "#474746",
+                        "surface-container-high": "#2e2925",
+                        "primary-fixed": "#ffdcbd",
+                        "on-surface": "#eae1db",
+                        "surface-dim": "#17130f",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary-fixed-dim": "#f0bd8b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#eae1db",
+                        "surface-container-lowest": "#110d0a",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#623f18",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#393430",
+                        "tertiary-container": "#8cb1ce",
+                        "tertiary-fixed-dim": "#a6cbe9",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#244a63",
+                        "secondary": "#c8c6c5",
+                        "surface-tint": "#f0bd8b",
+                        "inverse-on-surface": "#342f2c",
+                        "on-surface-variant": "#d4c4b7",
+                        "on-tertiary": "#06344c",
+                        "surface": "#17130f",
+                        "surface-bright": "#3d3834",
+                        "on-primary": "#482904",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#eae1db",
+                        "inverse-primary": "#7d562d",
+                        "outline-variant": "#50453b",
+                        "outline": "#9c8e82",
+                        "background": "#17130f",
+                        "primary-container": "#d4a373",
+                        "tertiary": "#a7ccea",
+                        "secondary-fixed": "#e4e2e1",
+                        "surface-container-low": "#1f1b17",
+                        "on-secondary-fixed-variant": "#474746"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "h2": ["Space Grotesk"],
+                        "body-s": ["Inter"],
+                        "body-m": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", {"lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h2": ["24px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-s": ["13px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500"}],
+                        "body-m": ["15px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "500"}],
+                        "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "h3": ["18px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Strict adherence to Swiss Industrial / 1px border aesthetic */
+        body {
+            background-color: #0A0A0A;
+            color: #eae1db;
+        }
+        .surface-level-1 {
+            background-color: #141414;
+            border: 1px solid #2A2A2A;
+        }
+        .border-technical {
+            border-color: #2A2A2A;
+        }
+        .input-technical {
+            background-color: #141414;
+            border: 1px solid #2A2A2A;
+            color: #eae1db;
+        }
+        .input-technical:focus {
+            border-color: #d4a373;
+            outline: none;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: #d4a373;
+            color: #0A0A0A;
+            border: none;
+        }
+        .text-sage {
+            color: #8cb1ce; /* Using tertiary-container as a rough proxy for a technical cool/sage tone in this dark theme */
+        }
+        .mono-large {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 32px;
+            line-height: 1.1;
+            letterSpacing: 0;
+            fontWeight: 400;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0A0A0A] min-h-screen flex flex-col font-body-m antialiased selection:bg-primary-container selection:text-[#0A0A0A]">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 border-b border-b border-zinc-800 flat no-shadows bg-zinc-950 flex justify-between items-center w-full px-6 h-16 z-50 fixed">
+<button class="text-zinc-500 hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2 border border-transparent border-technical">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="font-space-grotesk font-bold uppercase tracking-widest text-xl font-black text-white tracking-tighter">
+            WIRE
+        </div>
+<button class="text-zinc-500 hover:bg-zinc-900 transition-colors duration-75 active:bg-zinc-800 p-2 border border-transparent border-technical">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center pt-16 pb-16 px-container-padding max-w-2xl mx-auto w-full">
+<div class="w-full flex flex-col gap-lg">
+<!-- Header Section -->
+<div class="flex flex-col gap-sm border-b border-technical pb-md">
+<h1 class="font-h1 text-on-surface uppercase">YOUR ID</h1>
+<p class="font-body-s text-on-surface-variant">This is your unique global identifier. Do not share this with unverified entities.</p>
+</div>
+<!-- ID Display Block -->
+<div class="surface-level-1 p-lg flex flex-col items-center justify-center gap-md">
+<div class="font-label-caps text-on-surface-variant uppercase tracking-widest">WIRE IDENTIFICATION NUMBER</div>
+<div class="mono-large text-primary-container tracking-widest">8472 9103 65</div>
+<button class="flex items-center gap-sm font-label-caps text-on-surface hover:text-primary-container transition-colors p-unit border border-technical bg-[#0A0A0A]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">content_copy</span>
+                    COPY ID
+                </button>
+</div>
+<!-- Username Configuration -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-on-surface-variant uppercase" for="username">PUBLIC ALIAS</label>
+<div class="relative flex items-center">
+<span class="absolute left-md font-data-mono text-on-surface-variant">@</span>
+<input class="input-technical w-full pl-[36px] pr-md py-md font-data-mono text-data-mono" id="username" placeholder="Enter alias" type="text" value="operator_77"/>
+<span class="absolute right-md font-label-caps text-sage uppercase flex items-center gap-unit">
+<div class="w-2 h-2 rounded-none bg-tertiary-container"></div>
+                        AVAILABLE
+                    </span>
+</div>
+<p class="font-body-s text-on-surface-variant mt-unit">This alias will be visible in the global directory.</p>
+</div>
+<div class="h-px w-full bg-[#2A2A2A] my-sm"></div>
+<!-- Connection Status -->
+<div class="surface-level-1 p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">cell_tower</span>
+<div class="flex flex-col">
+<span class="font-body-m text-on-surface">Network Status</span>
+<span class="font-data-mono text-on-surface-variant text-[11px]">PING: 14ms | NODE: ALPHA-9</span>
+</div>
+</div>
+<div class="font-label-caps text-primary-container uppercase px-sm py-unit border border-[#d4a373] bg-[#141414]">SECURE</div>
+</div>
+</div>
+</main>
+<!-- Action Button (Fixed Bottom relative to content, above nav) -->
+<div class="fixed bottom-16 left-0 w-full px-container-padding py-md bg-[#0A0A0A] border-t border-technical flex justify-center z-40 md:static md:bg-transparent md:border-none md:p-0 md:mt-lg max-w-2xl mx-auto">
+<button class="btn-primary w-full py-md font-label-caps uppercase tracking-widest hover:bg-[#f2be8c] transition-colors active:scale-[0.99]">
+            INITIALIZE ID
+        </button>
+</div>
+<!-- BottomNavBar (Hidden on Web, visible on Mobile) -->
+<nav class="docked full-width bottom-0 border-t border-t border-zinc-800 flat no-shadows bg-zinc-950 fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 md:hidden">
+<button class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">CHATS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">call</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">CALLS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">PEOPLE</span>
+</button>
+<button class="flex flex-col items-center justify-center text-yellow-600 bg-zinc-900 border-t-2 border-yellow-600 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-mono text-[10px] uppercase tracking-widest mt-1">SETTINGS</span>
+</button>
+</nav>
+</body></html>

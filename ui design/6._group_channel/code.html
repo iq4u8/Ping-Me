@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group &amp; Channel Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&amp;family=Space+Grotesk:wght@700&amp;family=Inter:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#2c1600",
+                        "surface-container-highest": "#393430",
+                        "on-tertiary-container": "#1d445d",
+                        "error-container": "#93000a",
+                        "surface-container": "#231f1b",
+                        "primary": "#f2be8c",
+                        "on-primary-container": "#5b3912",
+                        "secondary-container": "#474746",
+                        "surface-container-high": "#2e2925",
+                        "primary-fixed": "#ffdcbd",
+                        "on-surface": "#eae1db",
+                        "surface-dim": "#17130f",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary-fixed-dim": "#f0bd8b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#eae1db",
+                        "surface-container-lowest": "#110d0a",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#623f18",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#393430",
+                        "tertiary-container": "#8cb1ce",
+                        "tertiary-fixed-dim": "#a6cbe9",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#244a63",
+                        "secondary": "#c8c6c5",
+                        "surface-tint": "#f0bd8b",
+                        "inverse-on-surface": "#342f2c",
+                        "on-surface-variant": "#d4c4b7",
+                        "on-tertiary": "#06344c",
+                        "surface": "#17130f",
+                        "surface-bright": "#3d3834",
+                        "on-primary": "#482904",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#eae1db",
+                        "inverse-primary": "#7d562d",
+                        "outline-variant": "#50453b",
+                        "outline": "#9c8e82",
+                        "background": "#17130f",
+                        "primary-container": "#d4a373",
+                        "tertiary": "#a7ccea",
+                        "secondary-fixed": "#e4e2e1",
+                        "surface-container-low": "#1f1b17",
+                        "on-secondary-fixed-variant": "#474746"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "h2": ["Space Grotesk"],
+                        "body-s": ["Inter"],
+                        "body-m": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-s": ["13px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-m": ["15px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "h3": ["18px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0A0A; color: #eae1db; }
+        .grid-bg { background-image: linear-gradient(#2A2A2A 1px, transparent 1px), linear-gradient(90deg, #2A2A2A 1px, transparent 1px); background-size: 24px 24px; }
+        .border-technical { border: 1px solid #2A2A2A; }
+        .border-technical-active { border: 1px solid #D4A373; }
+        .bg-surface-level1 { background-color: #141414; }
+        .bg-surface-level0 { background-color: #0A0A0A; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-m text-on-background h-screen flex flex-col antialiased selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- TopAppBar -->
+<header class="bg-zinc-950 font-space-grotesk font-bold uppercase tracking-widest flex justify-between items-center w-full px-6 h-16 border-b border-zinc-800 shrink-0 z-10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-500 hover:text-yellow-600 transition-colors duration-75 active:bg-zinc-800 p-2 cursor-pointer">arrow_back</span>
+<div class="flex flex-col">
+<span class="text-xl font-black text-white tracking-tighter">PROJECT OMEGA</span>
+<span class="font-data-mono text-data-mono text-zinc-500">1,024 MEMBERS</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-500 hover:text-yellow-600 transition-colors duration-75 active:bg-zinc-800 p-2 cursor-pointer">search</span>
+<span class="material-symbols-outlined text-zinc-500 hover:text-yellow-600 transition-colors duration-75 active:bg-zinc-800 p-2 cursor-pointer">more_vert</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden bg-surface-level0 relative grid-bg">
+<!-- Chat Canvas -->
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-unit">
+<!-- System Message -->
+<div class="flex justify-center my-md">
+<span class="font-data-mono text-[10px] text-zinc-500 uppercase tracking-widest bg-surface-level1 border-technical px-2 py-1">ALEX ADDED MARIA</span>
+</div>
+<!-- Message Block - Other -->
+<div class="flex flex-col gap-1 w-full max-w-3xl border-technical bg-surface-level1 p-sm">
+<div class="flex justify-between items-baseline mb-1">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-primary-container">ALEX CHEN</span>
+<span class="font-data-mono text-[10px] text-primary-container border border-primary-container px-1 py-0.5">ADMIN</span>
+</div>
+<span class="font-data-mono text-data-mono text-zinc-500">10:42 AM</span>
+</div>
+<p class="font-body-m text-body-m text-on-surface">The updated schematics have been uploaded to the central server. Please review before the sync at 1400 hours.</p>
+</div>
+<!-- Message Block - Other -->
+<div class="flex flex-col gap-1 w-full max-w-3xl border-technical bg-surface-level1 p-sm">
+<div class="flex justify-between items-baseline mb-1">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">MARIA ROSTOVA</span>
+</div>
+<span class="font-data-mono text-data-mono text-zinc-500">10:45 AM</span>
+</div>
+<p class="font-body-m text-body-m text-on-surface">Acknowledged. I'm seeing a discrepancy in the power routing logic on module 4.</p>
+</div>
+<!-- Image Block -->
+<div class="flex flex-col gap-1 w-full max-w-3xl border-technical bg-surface-level1 p-sm">
+<div class="flex justify-between items-baseline mb-1">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">MARIA ROSTOVA</span>
+</div>
+<span class="font-data-mono text-data-mono text-zinc-500">10:46 AM</span>
+</div>
+<div class="mt-2 border-technical">
+<img alt="Technical schematic detail" class="w-full h-auto object-cover grayscale opacity-80 mix-blend-screen" data-alt="A close-up shot of a complex industrial blueprint or technical schematic displayed on a high-contrast monitor. The lines are precise and sharp, primarily in austere monochrome with stark white structural outlines against a deep black background. Small, disciplined annotations and grid markers are visible. The lighting is cold and clinical, emphasizing the functionalist, mid-century industrial design aesthetic. The overall mood is serious, technical, and highly ordered." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOBuMeBwNXpKYx7d9byHe6oHKdX2HE23TeuJlU1wTvBNxb-dgg1Tkfs8DpJ0t-3v3kUIg_zdKBCot8zVpL1tpe5QKwj2kIpokpVYAiNfIBX_yp0761_J8mPmgn36X4pr_Hj-jvCIUt19_znz774-pxBv_QAaK9pVQD5va5CiFBsES842hqljInp2-bTlEnEQLKQdWGQGpyZu00QsZjrCbkCw6WTz6zk21bkwH-E99t3mYxE8linidFxbGcUa0A2RP3BzwUawhJeUV-"/>
+</div>
+</div>
+<!-- Message Block - Self -->
+<div class="flex flex-col gap-1 w-full max-w-3xl self-end border-technical bg-[#1A1A1A] p-sm">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">YOU</span>
+<span class="font-data-mono text-data-mono text-zinc-500">10:50 AM</span>
+</div>
+<p class="font-body-m text-body-m text-on-surface">I'll cross-reference the module 4 routing with the legacy specs. Standby.</p>
+</div>
+<!-- System Message -->
+<div class="flex justify-center my-md">
+<span class="font-data-mono text-[10px] text-zinc-500 uppercase tracking-widest bg-surface-level1 border-technical px-2 py-1">SYSTEM SYNC COMPLETE</span>
+</div>
+</div>
+<!-- Input Area -->
+<div class="bg-surface-level1 border-t border-[#2A2A2A] p-4 shrink-0">
+<div class="flex items-center gap-2">
+<button class="bg-[#2A2A2A] text-[#E8E6E3] p-2 hover:bg-[#3A3A3A] transition-colors border-technical">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+<div class="flex-1 border-technical bg-surface-level1 focus-within:border-technical-active transition-colors flex items-center px-3">
+<input class="w-full bg-transparent text-on-surface font-body-s text-body-s py-2 focus:outline-none placeholder:text-zinc-600 placeholder:font-data-mono border-none focus:ring-0" placeholder="TRANSMIT MESSAGE..." type="text"/>
+</div>
+<button class="bg-primary-container text-[#0A0A0A] p-2 hover:opacity-90 transition-opacity border-none">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-zinc-950 font-mono text-[10px] uppercase tracking-widest fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 border-t border-zinc-800">
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">chat_bubble</span>
+            CHATS
+        </a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">call</span>
+            CALLS
+        </a>
+<a class="flex flex-col items-center justify-center text-yellow-600 bg-zinc-900 border-t-2 border-yellow-600 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+            PEOPLE
+        </a>
+<a class="flex flex-col items-center justify-center text-zinc-500 h-full w-full hover:bg-zinc-900 transition-all duration-75 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+            SETTINGS
+        </a>
+</nav>
+</body></html>

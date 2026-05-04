@@ -1,0 +1,44 @@
+name: ping_me
+description: "Ping Me is an ultra-fast, secure messaging platform designed for absolute privacy. It features cutting-edge End-to-End Encryption powered by the Signal Protocol, ensuring your conversations, media, and data remain entirely yours."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.1.1
+  flutter_animate: ^4.5.0
+  flutter_svg: ^2.0.9
+  provider: ^6.1.1
+  dio: ^5.4.0
+  web_socket_channel: ^2.4.3
+  flutter_secure_storage: ^9.0.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  libsignal_protocol_dart: ^0.8.0
+  path_provider: ^2.1.2
+  intl: ^0.19.0
+  photo_manager: ^3.9.0
+  permission_handler: ^12.0.1
+  image_picker: ^1.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_native_splash: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_native_splash:
+  color: "#0A0A0A"
+  image: "assets/images/transparent_pixel.png"
+  android_12:
+    color: "#0A0A0A"
+    image: "assets/images/transparent_pixel.png"

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WIRE - Chat Conversation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#2c1600",
+                        "surface-container-highest": "#393430",
+                        "on-tertiary-container": "#1d445d",
+                        "error-container": "#93000a",
+                        "surface-container": "#231f1b",
+                        "primary": "#f2be8c",
+                        "on-primary-container": "#5b3912",
+                        "secondary-container": "#474746",
+                        "surface-container-high": "#2e2925",
+                        "primary-fixed": "#ffdcbd",
+                        "on-surface": "#eae1db",
+                        "surface-dim": "#17130f",
+                        "on-tertiary-fixed": "#001e2f",
+                        "primary-fixed-dim": "#f0bd8b",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#eae1db",
+                        "surface-container-lowest": "#110d0a",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed-variant": "#623f18",
+                        "on-secondary-container": "#b6b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#393430",
+                        "tertiary-container": "#8cb1ce",
+                        "tertiary-fixed-dim": "#a6cbe9",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#244a63",
+                        "secondary": "#c8c6c5",
+                        "surface-tint": "#f0bd8b",
+                        "inverse-on-surface": "#342f2c",
+                        "on-surface-variant": "#d4c4b7",
+                        "on-tertiary": "#06344c",
+                        "surface": "#17130f",
+                        "surface-bright": "#3d3834",
+                        "on-primary": "#482904",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#eae1db",
+                        "inverse-primary": "#7d562d",
+                        "outline-variant": "#50453b",
+                        "outline": "#9c8e82",
+                        "background": "#17130f",
+                        "primary-container": "#d4a373",
+                        "tertiary": "#a7ccea",
+                        "secondary-fixed": "#e4e2e1",
+                        "surface-container-low": "#1f1b17",
+                        "on-secondary-fixed-variant": "#474746"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "xs": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "h2": ["Space Grotesk"],
+                        "body-s": ["Inter"],
+                        "body-m": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-s": ["13px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500" }],
+                        "body-m": ["15px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "h3": ["18px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A; /* Level 0 Background */
+            color: #eae1db; /* on-background */
+        }
+        /* Custom scrollbar to match industrial aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #474746;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="h-screen w-full flex flex-col overflow-hidden text-on-background">
+<!-- TopAppBar from JSON -->
+<!-- Added z-index and fixed position as it's docked top -->
+<header class="bg-zinc-950 font-space-grotesk font-bold uppercase tracking-widest text-yellow-600 docked full-width top-0 border-b border-b border-zinc-800 flat no-shadows flex justify-between items-center w-full px-6 h-16 transition-colors duration-75 active:bg-zinc-800 z-50 shrink-0">
+<button aria-label="Menu" class="flex items-center justify-center w-10 h-10 hover:bg-zinc-900 transition-colors duration-75 text-zinc-500 rounded-DEFAULT">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="text-xl font-black text-white tracking-tighter">WIRE</div>
+<button aria-label="Search" class="flex items-center justify-center w-10 h-10 hover:bg-zinc-900 transition-colors duration-75 text-zinc-500 rounded-DEFAULT">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</header>
+<!-- Chat Header (Specific to this screen) -->
+<div class="flex items-center justify-between px-md py-sm bg-[#141414] border-b border-[#2A2A2A] shrink-0">
+<div class="flex items-center gap-md">
+<!-- Back Button for Navigation logic -->
+<button class="flex items-center justify-center w-8 h-8 text-secondary hover:bg-[#2A2A2A] rounded-DEFAULT transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<img alt="Avatar" class="w-10 h-10 rounded-none border border-[#2A2A2A] object-cover" data-alt="A stark, high-contrast monochrome portrait of a person, styled with severe geometric framing and harsh lighting reminiscent of mid-century industrial espionage files. The background is a flat, unyielding deep black. The subject's features are defined by sharp shadows, fitting a functionalist, austere visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnRmdAthyI_t_gGu1YU5DOshEs22YqqKnhqp3VZYHageRL-qs270Q1OmGfCFTvZzA3daTbs-C-YrAstz9Sig_ndl141puHAfbZyhDpfFucShz_7XQsae7NoHKI4dRgU5nXfXgke6xGvn1c_0wA3qEwB1LFFV8BufshK0w0l6LwetyvU5JmaSR6epkcmyanI0NOH6BuC_ndeqULKxQtt8Df4k3s9f8OAxrmx1SECbR0HzdYQjrJNq7cz0eSkm7qeUxG4qURRZnUhuOh"/>
+<div>
+<h2 class="font-h3 text-h3 text-on-surface m-0">ALEX_M</h2>
+<div class="font-data-mono text-data-mono text-primary-container mt-xs flex items-center gap-xs">
+<span class="w-2 h-2 bg-primary-container rounded-none inline-block"></span>
+                    typing...
+                </div>
+</div>
+</div>
+<button class="flex items-center justify-center w-8 h-8 text-secondary hover:bg-[#2A2A2A] rounded-DEFAULT transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- E2EE Banner -->
+<div class="bg-[#141414] border-b border-[#2A2A2A] py-xs px-md flex items-center justify-center shrink-0">
+<div class="font-data-mono text-[10px] uppercase text-[#7BA05B] tracking-widest flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+            E2EE ACTIVE
+        </div>
+</div>
+<!-- Canvas (Chat History) -->
+<!-- Suppressed navigation shell logically means this canvas takes the rest of the height -->
+<main class="flex-1 overflow-y-auto p-md flex flex-col gap-md bg-[#0A0A0A]">
+<!-- Date Divider -->
+<div class="flex items-center gap-sm my-sm">
+<div class="flex-1 h-px bg-[#2A2A2A]"></div>
+<div class="font-data-mono text-[10px] text-secondary tracking-widest">TODAY</div>
+<div class="flex-1 h-px bg-[#2A2A2A]"></div>
+</div>
+<!-- Received Message Block -->
+<div class="flex flex-col gap-xs max-w-[85%] self-start">
+<div class="bg-[#141414] border border-[#2A2A2A] p-sm rounded-[2px]">
+<p class="font-body-m text-body-m text-on-surface m-0">Coordinates confirmed. Initializing sequence protocol.</p>
+</div>
+<span class="font-data-mono text-[10px] text-secondary self-start">09:42:15</span>
+</div>
+<!-- Sent Message Block -->
+<div class="flex flex-col gap-xs max-w-[85%] self-end">
+<div class="bg-[#141414] border border-[#2A2A2A] p-sm rounded-[2px]">
+<p class="font-body-m text-body-m text-on-surface m-0">Acknowledged. Standing by for telemetry data.</p>
+</div>
+<span class="font-data-mono text-[10px] text-secondary self-end">09:43:02</span>
+</div>
+<!-- Received Message Block (Multi-line) -->
+<div class="flex flex-col gap-xs max-w-[85%] self-start">
+<div class="bg-[#141414] border border-[#2A2A2A] p-sm rounded-[2px] flex flex-col gap-sm">
+<p class="font-body-m text-body-m text-on-surface m-0">Telemetry stream active. Node 4 is showing anomalous latency.</p>
+<!-- Terminal-like nested block -->
+<div class="bg-[#0A0A0A] border border-[#2A2A2A] p-xs font-data-mono text-[11px] text-secondary-fixed-dim">
+                    &gt; ping node4.local<br/>
+                    Request timeout for icmp_seq 0<br/>
+                    Request timeout for icmp_seq 1
+                </div>
+</div>
+<span class="font-data-mono text-[10px] text-secondary self-start">09:45:11</span>
+</div>
+<!-- Sent Message Block -->
+<div class="flex flex-col gap-xs max-w-[85%] self-end">
+<div class="bg-[#141414] border border-[#2A2A2A] p-sm rounded-[2px]">
+<p class="font-body-m text-body-m text-on-surface m-0">Rerouting through Node 7. Stand by.</p>
+</div>
+<span class="font-data-mono text-[10px] text-secondary self-end">09:46:00</span>
+</div>
+<!-- Spacer to ensure last message isn't hidden behind input -->
+<div class="h-4"></div>
+</main>
+<!-- Input Area -->
+<div class="bg-[#141414] border-t border-[#2A2A2A] p-md shrink-0">
+<div class="flex gap-sm items-end">
+<button aria-label="Add attachment" class="flex items-center justify-center w-10 h-10 border border-[#2A2A2A] text-secondary hover:bg-[#2A2A2A] transition-colors rounded-none shrink-0">
+<span class="material-symbols-outlined">add</span>
+</button>
+<div class="flex-1 relative">
+<textarea class="w-full bg-[#141414] border border-[#2A2A2A] text-on-surface font-body-m text-body-m p-sm min-h-[40px] max-h-[120px] resize-none rounded-none focus:border-primary-container focus:ring-0 transition-colors m-0" placeholder="Input command sequence..." rows="1"></textarea>
+</div>
+<button aria-label="Send message" class="flex items-center justify-center w-10 h-10 bg-primary-container text-[#0A0A0A] hover:bg-[#e0b488] transition-colors rounded-none shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar Suppressed -->
+<!-- As per instructions: "Task-Focused: Any sub-page featuring a "Close" or "Back" action that implies a temporary departure from the main navigation flow." - Chat conversation is task-focused. -->
+</body></html>
