@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class CreateGroupScreen extends StatefulWidget {
   const CreateGroupScreen({super.key});
@@ -50,15 +52,11 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
         actions: [
           if (_step == 0)
             TextButton(
-              onPressed: _selectedContacts.isNotEmpty
-                  ? () => setState(() => _step = 1)
-                  : null,
+              onPressed: () => setState(() => _step = 1),
               child: Text(
                 'Next',
                 style: TextStyle(
-                  color: _selectedContacts.isNotEmpty
-                      ? colorScheme.primary
-                      : colorScheme.onSurface.withOpacity(0.3),
+                  color: colorScheme.primary,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -70,6 +68,8 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
   }
 
   Widget _buildContactPicker(ColorScheme colorScheme) {
+    final mockContacts = ['Alice Smith', 'Bob Jones', 'Charlie Brown', 'Diana Prince'];
+    
     return Column(
       children: [
         // Selected chips
@@ -113,25 +113,34 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
             ),
           ),
         ),
-        // Empty state
+        // Contact List
         Expanded(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.group_add_rounded, size: 80, color: colorScheme.primary.withOpacity(0.3)),
-                const SizedBox(height: 16),
-                Text(
-                  'Add members to your group',
-                  style: TextStyle(color: colorScheme.onSurface.withOpacity(0.5), fontSize: 16),
+          child: ListView.builder(
+            itemCount: mockContacts.length,
+            itemBuilder: (context, index) {
+              final name = mockContacts[index];
+              final isSelected = _selectedContacts.contains(name);
+              return ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: colorScheme.primary.withOpacity(0.2),
+                  child: Text(name[0], style: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold)),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Search by username to add contacts',
-                  style: TextStyle(color: colorScheme.onSurface.withOpacity(0.3), fontSize: 13),
-                ),
-              ],
-            ),
+                title: Text(name, style: TextStyle(color: colorScheme.onSurface, fontSize: 15, fontWeight: FontWeight.w500)),
+                subtitle: Text('Last seen recently', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.5), fontSize: 13)),
+                trailing: isSelected
+                    ? Icon(Icons.check_circle, color: colorScheme.primary)
+                    : Icon(Icons.circle_outlined, color: colorScheme.onSurface.withOpacity(0.2)),
+                onTap: () {
+                  setState(() {
+                    if (isSelected) {
+                      _selectedContacts.remove(name);
+                    } else {
+                      _selectedContacts.add(name);
+                    }
+                  });
+                },
+              );
+            },
           ),
         ),
       ],
@@ -147,7 +156,37 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
         Center(
           child: GestureDetector(
             onTap: () {
-              // Photo picker
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: colorScheme.surface,
+                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+                builder: (ctx) => SafeArea(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        leading: Icon(Icons.camera_alt_outlined, color: colorScheme.onSurface),
+                        title: Text('Take Photo', style: TextStyle(color: colorScheme.onSurface)),
+                        onTap: () async {
+                          HapticFeedback.selectionClick();
+                          final status = await Permission.camera.request();
+                          if (status.isGranted) {
+                            Navigator.pop(ctx);
+                          } else {
+                            Navigator.pop(ctx);
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Camera permission required')));
+                          }
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.photo_library_outlined, color: colorScheme.onSurface),
+                        title: Text('Choose from Gallery', style: TextStyle(color: colorScheme.onSurface)),
+                        onTap: () => Navigator.pop(ctx),
+                      ),
+                    ],
+                  ),
+                ),
+              );
             },
             child: CircleAvatar(
               radius: 50,
@@ -166,6 +205,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
           ),
           child: TextField(
             controller: _nameController,
+            onChanged: (_) => setState(() {}),
             decoration: InputDecoration(
               hintText: 'Group name',
               hintStyle: TextStyle(color: colorScheme.onSurface.withOpacity(0.4)),
@@ -200,7 +240,9 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
           height: 50,
           child: ElevatedButton(
             onPressed: _nameController.text.trim().isNotEmpty ? () {
-              // Create group API call
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Group "${_nameController.text}" created successfully!')),
+              );
               Navigator.pop(context);
             } : null,
             style: ElevatedButton.styleFrom(

@@ -64,30 +64,56 @@ class _UsernameSetupScreenState extends State<UsernameSetupScreen> {
                       const SizedBox(height: 36),
                       // Avatar
                       Center(
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                color: colorScheme.primary.withOpacity(0.15),
-                                shape: BoxShape.circle,
+                        child: GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              backgroundColor: colorScheme.surface,
+                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+                              builder: (ctx) => SafeArea(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ListTile(
+                                      leading: Icon(Icons.camera_alt_outlined, color: colorScheme.onSurface),
+                                      title: Text('Take Photo', style: TextStyle(color: colorScheme.onSurface)),
+                                      onTap: () => Navigator.pop(ctx),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(Icons.photo_library_outlined, color: colorScheme.onSurface),
+                                      title: Text('Choose from Gallery', style: TextStyle(color: colorScheme.onSurface)),
+                                      onTap: () => Navigator.pop(ctx),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              child: Icon(Icons.person, size: 40, color: colorScheme.primary),
-                            ),
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: Container(
-                                padding: const EdgeInsets.all(5),
+                            );
+                          },
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: 80,
+                                height: 80,
                                 decoration: BoxDecoration(
-                                  color: colorScheme.primary,
+                                  color: colorScheme.primary.withOpacity(0.15),
                                   shape: BoxShape.circle,
                                 ),
-                                child: Icon(Icons.camera_alt, color: colorScheme.onPrimary, size: 14),
+                                child: Icon(Icons.person, size: 40, color: colorScheme.primary),
                               ),
-                            ),
-                          ],
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  padding: const EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    color: colorScheme.primary,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(Icons.camera_alt, color: colorScheme.onPrimary, size: 14),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(height: 28),
@@ -169,7 +195,7 @@ class _UsernameSetupScreenState extends State<UsernameSetupScreen> {
                           final fullName = '${_firstNameController.text} ${_lastNameController.text}'.trim();
                           await authVM.completeProfile(fullName, fullName);
                           if (mounted) {
-                            Navigator.pushReplacementNamed(context, '/chats');
+                            _showPasskeyPrompt(context, colorScheme);
                           }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -181,6 +207,66 @@ class _UsernameSetupScreenState extends State<UsernameSetupScreen> {
                     ),
                   ),
                 ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showPasskeyPrompt(BuildContext context, ColorScheme colorScheme) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: colorScheme.surface,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      builder: (ctx) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.fingerprint, size: 64, color: colorScheme.primary),
+              const SizedBox(height: 16),
+              Text(
+                'Secure your account',
+                style: TextStyle(color: colorScheme.onSurface, fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Create a passkey for this device to sign in securely and quickly using your fingerprint, face, or screen lock.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: colorScheme.onSurface.withOpacity(0.6), fontSize: 14),
+              ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: colorScheme.primary,
+                    foregroundColor: colorScheme.onPrimary,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                  ),
+                  onPressed: () {
+                    // Mock Passkey Generation success
+                    Navigator.pop(ctx);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Passkey registered successfully!')),
+                    );
+                    Navigator.pushReplacementNamed(context, '/chats');
+                  },
+                  child: const Text('Create Passkey', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                ),
+              ),
+              const SizedBox(height: 12),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(ctx);
+                  Navigator.pushReplacementNamed(context, '/chats');
+                },
+                child: Text('Skip for now', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.5))),
+              ),
             ],
           ),
         ),

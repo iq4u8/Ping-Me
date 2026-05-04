@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../../shared/widgets/custom_media_picker.dart';
 
 class ChatWallpapersScreen extends StatelessWidget {
   const ChatWallpapersScreen({super.key});
@@ -49,8 +51,22 @@ class ChatWallpapersScreen extends StatelessWidget {
                 title: Text('Change Default Wallpaper', style: TextStyle(color: colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.w500)),
                 subtitle: Text('Applies to all chats', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.5), fontSize: 13)),
                 trailing: Icon(Icons.chevron_right, color: colorScheme.onSurface.withOpacity(0.3), size: 22),
-                onTap: () {
-                  // TODO: Open image picker to set default wallpaper
+                onTap: () async {
+                  HapticFeedback.selectionClick();
+                  final result = await showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (ctx) => SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.85,
+                      child: const CustomMediaPickerBottomSheet(showOnlyGallery: true),
+                    ),
+                  );
+                  if (result != null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: const Text('Default wallpaper updated!'), backgroundColor: colorScheme.primary),
+                    );
+                  }
                 },
               ),
             ),
@@ -86,8 +102,22 @@ class ChatWallpapersScreen extends StatelessWidget {
                         title: Text(chatName, style: TextStyle(color: colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.w500)),
                         subtitle: Text('Default wallpaper', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.4), fontSize: 13)),
                         trailing: Icon(Icons.edit, color: colorScheme.primary, size: 20),
-                        onTap: () {
-                          // TODO: Open image picker to set custom wallpaper for this specific chat
+                        onTap: () async {
+                          HapticFeedback.selectionClick();
+                          final result = await showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (ctx) => SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.85,
+                              child: const CustomMediaPickerBottomSheet(showOnlyGallery: true),
+                            ),
+                          );
+                          if (result != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Wallpaper updated for $chatName!'), backgroundColor: colorScheme.primary),
+                            );
+                          }
                         },
                       ),
                       if (index < dummyChats.length - 1)

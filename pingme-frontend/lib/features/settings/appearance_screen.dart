@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import '../../shared/widgets/custom_media_picker.dart';
 import '../../presentation/viewmodels/theme_viewmodel.dart';
 import '../../theme.dart';
 
@@ -117,7 +119,23 @@ class AppearanceScreen extends StatelessWidget {
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
                     title: Text('Dashboard Wallpaper', style: TextStyle(color: colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.chevron_right, color: colorScheme.onSurface.withOpacity(0.3), size: 22),
-                    onTap: () {},
+                    onTap: () async {
+                      HapticFeedback.selectionClick();
+                      final result = await showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (ctx) => SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.85,
+                          child: const CustomMediaPickerBottomSheet(showOnlyGallery: true),
+                        ),
+                      );
+                      if (result != null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: const Text('Dashboard wallpaper updated!'), backgroundColor: colorScheme.primary),
+                        );
+                      }
+                    },
                   ),
                 ],
               ),

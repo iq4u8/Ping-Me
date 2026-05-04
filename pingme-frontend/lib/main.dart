@@ -17,8 +17,16 @@ import 'features/chat/chat_folders_screen.dart';
 import 'features/chat/saved_messages_screen.dart';
 import 'features/settings/appearance_screen.dart';
 import 'features/settings/chat_wallpapers_screen.dart';
+import 'features/settings/account_screen.dart';
+import 'features/settings/privacy_screen.dart';
+import 'features/settings/security_screen.dart';
+import 'features/settings/notification_screen.dart';
+import 'features/settings/data_storage_screen.dart';
+import 'features/settings/active_sessions_screen.dart';
+import 'features/settings/help_screen.dart';
 import 'features/profile/qr_code_screen.dart';
 import 'features/profile/edit_info_screen.dart';
+import 'features/profile/user_profile_screen.dart';
 import 'features/groups/create_group_screen.dart';
 import 'features/channels/create_channel_screen.dart';
 import 'features/calls/call_history_screen.dart';
@@ -107,6 +115,23 @@ class PingMeApp extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => const CallHistoryScreen());
           case '/saved_messages':
             return MaterialPageRoute(builder: (context) => const SavedMessagesScreen());
+          case '/account':
+            return MaterialPageRoute(builder: (context) => const AccountScreen());
+          case '/privacy':
+            return MaterialPageRoute(builder: (context) => const PrivacyScreen());
+          case '/security':
+            return MaterialPageRoute(builder: (context) => const SecurityScreen());
+          case '/notifications':
+            return MaterialPageRoute(builder: (context) => const NotificationScreen());
+          case '/data_storage':
+            return MaterialPageRoute(builder: (context) => const DataStorageScreen());
+          case '/active_sessions':
+            return MaterialPageRoute(builder: (context) => const ActiveSessionsScreen());
+          case '/help':
+            return MaterialPageRoute(builder: (context) => const HelpScreen());
+          case '/user_profile':
+            final userName = settings.arguments as String;
+            return MaterialPageRoute(builder: (context) => UserProfileScreen(userName: userName));
           default:
             return null;
         }

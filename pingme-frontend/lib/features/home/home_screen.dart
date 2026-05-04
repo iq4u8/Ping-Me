@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'dart:ui';
 import '../chat/chat_list_screen.dart';
 import '../contacts/contacts_screen.dart';
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onNotification: (notification) {
           if (notification.direction == ScrollDirection.reverse) {
             if (!_isNavBarHidden) setState(() => _isNavBarHidden = true);
-          } else if (notification.direction == ScrollDirection.forward) {
+          } else if (notification.direction == ScrollDirection.forward || notification.direction == ScrollDirection.idle) {
             if (_isNavBarHidden) setState(() => _isNavBarHidden = false);
           }
           return false;
@@ -154,7 +155,10 @@ class _NavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        HapticFeedback.selectionClick();
+        onTap();
+      },
       behavior: HitTestBehavior.opaque,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),

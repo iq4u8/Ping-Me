@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../shared/widgets/wire_components.dart';
 import '../../theme.dart';
@@ -126,8 +127,30 @@ class _IdentifyScreenState extends State<IdentifyScreen> {
                           width: double.infinity,
                           height: 48,
                           child: OutlinedButton.icon(
-                            onPressed: () {},
-                            icon: Icon(Icons.g_mobiledata, size: 30, color: colorScheme.onSurface),
+                            onPressed: () async {
+                              HapticFeedback.selectionClick();
+                              // Show spinner
+                              showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                barrierColor: Colors.black54,
+                                builder: (ctx) => Center(
+                                  child: Column(mainAxisSize: MainAxisSize.min, children: [
+                                    SizedBox(width: 44, height: 44, child: CircularProgressIndicator(strokeWidth: 3, color: colorScheme.primary)),
+                                    const SizedBox(height: 16),
+                                    const Text('Signing in with Google...', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500, decoration: TextDecoration.none)),
+                                  ]),
+                                ),
+                              );
+                              await Future.delayed(const Duration(milliseconds: 1200));
+                              if (!mounted) return;
+                              Navigator.pop(context); // close spinner
+                              Navigator.pushNamed(context, '/username');
+                            },
+                            icon: const SizedBox(
+                              width: 20, height: 20,
+                              child: Text('G', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Color(0xFF4285F4))),
+                            ),
                             label: Text('Continue with Google', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: colorScheme.onSurface)),
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),

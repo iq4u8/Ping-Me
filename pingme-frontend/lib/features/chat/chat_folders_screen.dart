@@ -13,46 +13,92 @@ class _ChatFoldersScreenState extends State<ChatFoldersScreen> {
   void _showFolderDialog(BuildContext context, ChatViewModel chatVM, {int? indexToEdit, String? currentName}) {
     final TextEditingController controller = TextEditingController(text: currentName);
     final colorScheme = Theme.of(context).colorScheme;
+    
+    // Mock selection state
+    bool incDirect = true;
+    bool incGroups = false;
+    bool incChannels = false;
 
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          backgroundColor: colorScheme.surface,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: Text(indexToEdit == null ? 'Create Category' : 'Rename Category', style: TextStyle(color: colorScheme.onSurface)),
-          content: TextField(
-            controller: controller,
-            autofocus: true,
-            style: TextStyle(color: colorScheme.onSurface),
-            decoration: InputDecoration(
-              hintText: 'Category Name',
-              hintStyle: TextStyle(color: colorScheme.onSurface.withOpacity(0.4)),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: colorScheme.primary),
+        return StatefulBuilder(
+          builder: (context, setStateDialog) {
+            return AlertDialog(
+              backgroundColor: colorScheme.surface,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              title: Text(indexToEdit == null ? 'Create Category' : 'Edit Category', style: TextStyle(color: colorScheme.onSurface)),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextField(
+                      controller: controller,
+                      autofocus: true,
+                      style: TextStyle(color: colorScheme.onSurface),
+                      decoration: InputDecoration(
+                        hintText: 'Category Name',
+                        hintStyle: TextStyle(color: colorScheme.onSurface.withOpacity(0.4)),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: colorScheme.primary),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Included Chats', style: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold, fontSize: 14)),
+                    ),
+                    const SizedBox(height: 8),
+                    CheckboxListTile(
+                      title: Text('Direct Chats', style: TextStyle(color: colorScheme.onSurface)),
+                      value: incDirect,
+                      activeColor: colorScheme.primary,
+                      onChanged: (v) => setStateDialog(() => incDirect = v ?? false),
+                      contentPadding: EdgeInsets.zero,
+                      controlAffinity: ListTileControlAffinity.leading,
+                    ),
+                    CheckboxListTile(
+                      title: Text('Groups', style: TextStyle(color: colorScheme.onSurface)),
+                      value: incGroups,
+                      activeColor: colorScheme.primary,
+                      onChanged: (v) => setStateDialog(() => incGroups = v ?? false),
+                      contentPadding: EdgeInsets.zero,
+                      controlAffinity: ListTileControlAffinity.leading,
+                    ),
+                    CheckboxListTile(
+                      title: Text('Channels', style: TextStyle(color: colorScheme.onSurface)),
+                      value: incChannels,
+                      activeColor: colorScheme.primary,
+                      onChanged: (v) => setStateDialog(() => incChannels = v ?? false),
+                      contentPadding: EdgeInsets.zero,
+                      controlAffinity: ListTileControlAffinity.leading,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.6))),
-            ),
-            TextButton(
-              onPressed: () {
-                final text = controller.text.trim();
-                if (text.isNotEmpty) {
-                  if (indexToEdit == null) {
-                    chatVM.addFolder(text);
-                  } else {
-                    chatVM.renameFolder(indexToEdit, text);
-                  }
-                }
-                Navigator.pop(context);
-              },
-              child: Text('Save', style: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold)),
-            ),
-          ],
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text('Cancel', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.6))),
+                ),
+                TextButton(
+                  onPressed: () {
+                    final text = controller.text.trim();
+                    if (text.isNotEmpty) {
+                      if (indexToEdit == null) {
+                        chatVM.addFolder(text);
+                      } else {
+                        chatVM.renameFolder(indexToEdit, text);
+                      }
+                    }
+                    Navigator.pop(context);
+                  },
+                  child: Text('Save', style: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            );
+          }
         );
       },
     );

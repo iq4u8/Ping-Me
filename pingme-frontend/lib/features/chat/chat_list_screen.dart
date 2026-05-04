@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../theme.dart';
 import '../../presentation/viewmodels/chat_viewmodel.dart';
@@ -32,6 +33,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
 
     return Scaffold(
       backgroundColor: colorScheme.background,
+      drawerScrimColor: Colors.black.withOpacity(0.2), // Reduced dimming
       endDrawer: _ChatListEndDrawer(onTabSwitch: widget.onTabSwitch),
       body: SafeArea(
         child: Column(
@@ -105,10 +107,18 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     children: [
                       ...List.generate(allFilters.length, (index) {
                         final isSelected = _selectedFilter == index;
+                        final isDefault = allFilters[index] == 'All' || allFilters[index] == 'Unread';
                         return Padding(
                           padding: const EdgeInsets.only(right: 6),
                           child: GestureDetector(
-                            onTap: () => setState(() => _selectedFilter = index),
+                            onTap: () {
+                              HapticFeedback.selectionClick();
+                              setState(() => _selectedFilter = index);
+                            },
+                            onLongPressStart: (details) {
+                              HapticFeedback.heavyImpact();
+                              _showFolderContextMenu(context, details.globalPosition, allFilters[index], isDefault, chatVM, index);
+                            },
                             child: Container(
                               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                               decoration: BoxDecoration(
@@ -236,6 +246,59 @@ class _ChatListScreenState extends State<ChatListScreen> {
       },
     );
   }
+
+  void _showFolderContextMenu(BuildContext context, Offset position, String folderName, bool isDefault, ChatViewModel chatVM, int index) {
+    final colorScheme = Theme.of(context).colorScheme;
+    
+    showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(position.dx, position.dy + 10, position.dx + 1, position.dy + 11),
+      color: colorScheme.surface,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      items: [
+        PopupMenuItem(
+          child: ListTile(leading: Icon(Icons.edit, color: colorScheme.onSurface), title: Text('Edit folder', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+          onTap: () {
+            Future.delayed(Duration.zero, () {
+              Navigator.pushNamed(context, '/chat_folders');
+            });
+          },
+        ),
+        PopupMenuItem(
+          child: ListTile(leading: Icon(Icons.reorder, color: colorScheme.onSurface), title: Text('Reorder', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+          onTap: () => Future.delayed(Duration.zero, () => Navigator.pushNamed(context, '/chat_folders')),
+        ),
+        PopupMenuItem(
+          child: ListTile(leading: Icon(Icons.volume_off, color: colorScheme.onSurface), title: Text('Mute All', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+        ),
+        PopupMenuItem(
+          child: ListTile(leading: Icon(Icons.notifications_paused, color: colorScheme.onSurface), title: Text('Mute for...', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+        ),
+        PopupMenuItem(
+          child: ListTile(leading: Icon(Icons.done_all, color: colorScheme.onSurface), title: Text('Mark all as read', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+        ),
+        PopupMenuItem(
+          child: ListTile(leading: Icon(Icons.sort, color: colorScheme.onSurface), title: Text('Sort', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+        ),
+        PopupMenuItem(
+          child: ListTile(leading: Icon(Icons.push_pin_outlined, color: colorScheme.onSurface), title: Text('Set as default tab', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+        ),
+        if (isDefault)
+          PopupMenuItem(
+            child: ListTile(leading: Icon(Icons.visibility_off, color: colorScheme.onSurface), title: Text('Hide', style: TextStyle(color: colorScheme.onSurface)), dense: true, contentPadding: EdgeInsets.zero),
+            onTap: () {},
+          )
+        else
+          PopupMenuItem(
+            child: ListTile(leading: Icon(Icons.delete_outline, color: Colors.redAccent), title: const Text('Delete folder', style: TextStyle(color: Colors.redAccent)), dense: true, contentPadding: EdgeInsets.zero),
+            onTap: () {
+              // Real index is index - 1 because 'All' is at index 0.
+              Future.delayed(Duration.zero, () => chatVM.removeFolder(index - 1));
+            },
+          ),
+      ],
+    );
+  }
 }
 
 class _AnimatedFAB extends StatefulWidget {
@@ -321,66 +384,103 @@ class ChatListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return InkWell(
-      onTap: onClick,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 24,
-              backgroundColor: colorScheme.primary.withOpacity(0.15),
-              child: Text(
-                name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(
-                  color: colorScheme.primary,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+    return Dismissible(
+      key: Key(name),
+      background: Container(
+        color: colorScheme.primary,
+        alignment: Alignment.centerLeft,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Icon(Icons.archive, color: colorScheme.onPrimary),
+      ),
+      secondaryBackground: Container(
+        color: Colors.red.shade400,
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: const Icon(Icons.delete, color: Colors.white),
+      ),
+      confirmDismiss: (direction) async {
+        if (direction == DismissDirection.endToStart) {
+          return await showDialog(
+            context: context,
+            builder: (ctx) => AlertDialog(
+              backgroundColor: colorScheme.surface,
+              title: Text('Delete Chat', style: TextStyle(color: colorScheme.onSurface)),
+              content: Text('Are you sure you want to delete this chat?', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.7))),
+              actions: [
+                TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text('Cancel', style: TextStyle(color: colorScheme.primary))),
+                TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Delete', style: TextStyle(color: Colors.red))),
+              ],
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: const Text('Chat Archived'), backgroundColor: colorScheme.primary));
+          return false; // don't actually dismiss, just show snackbar
+        }
+      },
+      child: InkWell(
+        onTap: () {
+          HapticFeedback.selectionClick();
+          onClick();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 24,
+                backgroundColor: colorScheme.primary.withOpacity(0.15),
+                child: Text(
+                  name.isNotEmpty ? name[0].toUpperCase() : '?',
+                  style: TextStyle(
+                    color: colorScheme.primary,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          name,
-                          style: TextStyle(
-                            fontWeight: unread ? FontWeight.bold : FontWeight.w500,
-                            color: colorScheme.onSurface,
-                            fontSize: 15,
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            name,
+                            style: TextStyle(
+                              fontWeight: unread ? FontWeight.bold : FontWeight.w500,
+                              color: colorScheme.onSurface,
+                              fontSize: 15,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
-                      ),
-                      Text(
-                        time,
-                        style: TextStyle(
-                          color: unread ? colorScheme.primary : colorScheme.onSurface.withOpacity(0.4),
-                          fontSize: 12,
+                        Text(
+                          time,
+                          style: TextStyle(
+                            color: unread ? colorScheme.primary : colorScheme.onSurface.withOpacity(0.4),
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    lastMsg,
-                    style: TextStyle(
-                      color: colorScheme.onSurface.withOpacity(0.5),
-                      fontSize: 13,
+                      ],
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+                    const SizedBox(height: 2),
+                    Text(
+                      lastMsg,
+                      style: TextStyle(
+                        color: colorScheme.onSurface.withOpacity(0.5),
+                        fontSize: 13,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -494,7 +594,15 @@ class _ChatListEndDrawer extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   shrinkWrap: true,
                   children: [
-                    _DrawerTile(icon: Icons.add, label: 'Add Account', colorScheme: colorScheme),
+                    _DrawerTile(
+                      icon: Icons.add, 
+                      label: 'Add Account', 
+                      colorScheme: colorScheme,
+                      onTap: () {
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Multiple accounts support coming soon'), backgroundColor: colorScheme.primary));
+                      },
+                    ),
                     Divider(color: colorScheme.onSurface.withOpacity(0.1)),
                     _DrawerTile(
                       icon: Icons.person_outline, 
@@ -595,7 +703,11 @@ class _DrawerTile extends StatelessWidget {
     return ListTile(
       leading: Icon(icon, color: colorScheme.onSurface.withOpacity(0.8), size: 20),
       title: Text(label, style: TextStyle(color: colorScheme.onSurface, fontSize: 14, fontWeight: FontWeight.w500)),
-      onTap: onTap ?? () => Navigator.pop(context),
+      onTap: () {
+        HapticFeedback.selectionClick();
+        if (onTap != null) onTap!();
+        else Navigator.pop(context);
+      },
       horizontalTitleGap: 12,
       dense: true,
       visualDensity: const VisualDensity(vertical: -2),

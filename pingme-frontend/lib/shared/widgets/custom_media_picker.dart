@@ -81,12 +81,12 @@ class _CustomMediaPickerBottomSheetState extends State<CustomMediaPickerBottomSh
     }
   }
 
-  Widget _buildGalleryTab() {
+  Widget _buildGalleryTab(ColorScheme colorScheme) {
     return Column(
       children: [
         Expanded(
           child: _assets.isEmpty
-              ? (_isLoading ? const Center(child: CircularProgressIndicator()) : const Center(child: Text("No media found", style: TextStyle(color: Colors.white))))
+              ? (_isLoading ? const Center(child: CircularProgressIndicator()) : Center(child: Text("No media found", style: TextStyle(color: colorScheme.onSurface))))
               : GridView.builder(
                   controller: _scrollController,
                   padding: const EdgeInsets.all(2),
@@ -135,29 +135,30 @@ class _CustomMediaPickerBottomSheetState extends State<CustomMediaPickerBottomSh
     );
   }
 
-  Widget _buildPlaceholderTab(String title) {
-    return Center(child: Text(title, style: const TextStyle(color: Colors.white)));
+  Widget _buildPlaceholderTab(String title, ColorScheme colorScheme) {
+    return Center(child: Text(title, style: TextStyle(color: colorScheme.onSurface)));
   }
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     Widget content;
     if (_selectedTabIndex == 0) {
-      content = _buildGalleryTab();
+      content = _buildGalleryTab(colorScheme);
     } else if (_selectedTabIndex == 1) {
-      content = _buildPlaceholderTab("File Picker");
+      content = _buildPlaceholderTab("File Picker", colorScheme);
     } else if (_selectedTabIndex == 2) {
-      content = _buildPlaceholderTab("Location");
+      content = _buildPlaceholderTab("Location", colorScheme);
     } else if (_selectedTabIndex == 3) {
-      content = _buildPlaceholderTab("Contact");
+      content = _buildPlaceholderTab("Contact", colorScheme);
     } else {
-      content = _buildPlaceholderTab("Music");
+      content = _buildPlaceholderTab("Music", colorScheme);
     }
 
     return Container(
-      decoration: const BoxDecoration(
-        color: Color(0xFF1E1E1E), // Dark background for bottom sheet
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
         children: [
@@ -167,7 +168,7 @@ class _CustomMediaPickerBottomSheetState extends State<CustomMediaPickerBottomSh
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: Colors.grey[600],
+              color: colorScheme.onSurface.withOpacity(0.2),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -178,18 +179,18 @@ class _CustomMediaPickerBottomSheetState extends State<CustomMediaPickerBottomSh
           if (!widget.showOnlyGallery)
             Container(
               padding: const EdgeInsets.only(top: 12, bottom: 24, left: 10, right: 10),
-              decoration: const BoxDecoration(
-                color: Color(0xFF2C2C2C),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              decoration: BoxDecoration(
+                color: colorScheme.surface,
+                border: Border(top: BorderSide(color: colorScheme.onSurface.withOpacity(0.05))),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _navItem(0, Icons.photo_outlined, "Gallery", Colors.blue),
-                  _navItem(1, Icons.insert_drive_file_outlined, "File", Colors.white),
-                  _navItem(2, Icons.location_on_outlined, "Location", Colors.white),
-                  _navItem(3, Icons.person_outline, "Contact", Colors.white),
-                  _navItem(4, Icons.music_note_outlined, "Music", Colors.white),
+                  _navItem(0, Icons.photo_outlined, "Gallery", colorScheme),
+                  _navItem(1, Icons.insert_drive_file_outlined, "File", colorScheme),
+                  _navItem(2, Icons.location_on_outlined, "Location", colorScheme),
+                  _navItem(3, Icons.person_outline, "Contact", colorScheme),
+                  _navItem(4, Icons.music_note_outlined, "Music", colorScheme),
                 ],
               ),
             ),
@@ -198,8 +199,9 @@ class _CustomMediaPickerBottomSheetState extends State<CustomMediaPickerBottomSh
     );
   }
 
-  Widget _navItem(int index, IconData icon, String label, Color iconColor) {
+  Widget _navItem(int index, IconData icon, String label, ColorScheme colorScheme) {
     final isSelected = _selectedTabIndex == index;
+    final color = isSelected ? colorScheme.primary : colorScheme.onSurface.withOpacity(0.5);
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -209,12 +211,12 @@ class _CustomMediaPickerBottomSheetState extends State<CustomMediaPickerBottomSh
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: isSelected ? Colors.blue : Colors.grey, size: 28),
+          Icon(icon, color: color, size: 28),
           const SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(
-              color: isSelected ? Colors.blue : Colors.grey,
+              color: color,
               fontSize: 12,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             ),

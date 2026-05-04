@@ -23,9 +23,9 @@ class SettingsScreen extends StatelessWidget {
             _SectionContainer(
               colorScheme: colorScheme,
               children: [
-                _SettingsTile(icon: Icons.vpn_key_outlined, label: 'Account', colorScheme: colorScheme),
-                _SettingsTile(icon: Icons.lock_outline, label: 'Privacy', colorScheme: colorScheme),
-                _SettingsTile(icon: Icons.security_outlined, label: 'Security', colorScheme: colorScheme, isLast: true),
+                _SettingsTile(icon: Icons.vpn_key_outlined, label: 'Account', colorScheme: colorScheme, onTap: () => Navigator.pushNamed(context, '/account')),
+                _SettingsTile(icon: Icons.lock_outline, label: 'Privacy', colorScheme: colorScheme, onTap: () => Navigator.pushNamed(context, '/privacy')),
+                _SettingsTile(icon: Icons.security_outlined, label: 'Security', colorScheme: colorScheme, isLast: true, onTap: () => Navigator.pushNamed(context, '/security')),
               ],
             ),
             const SizedBox(height: 16),
@@ -33,16 +33,14 @@ class SettingsScreen extends StatelessWidget {
             _SectionContainer(
               colorScheme: colorScheme,
               children: [
-                _SettingsTile(icon: Icons.notifications_outlined, label: 'Notifications', colorScheme: colorScheme),
-                _SettingsTile(icon: Icons.data_usage_outlined, label: 'Data & Storage', colorScheme: colorScheme),
+                _SettingsTile(icon: Icons.notifications_outlined, label: 'Notifications', colorScheme: colorScheme, onTap: () => Navigator.pushNamed(context, '/notifications')),
+                _SettingsTile(icon: Icons.data_usage_outlined, label: 'Data & Storage', colorScheme: colorScheme, onTap: () => Navigator.pushNamed(context, '/data_storage')),
                 _SettingsTile(
                   icon: Icons.palette_outlined, 
                   label: 'Appearance', 
                   colorScheme: colorScheme, 
                   isLast: true,
-                  onTap: () {
-                    Navigator.pushNamed(context, '/appearance');
-                  },
+                  onTap: () => Navigator.pushNamed(context, '/appearance'),
                 ),
               ],
             ),
@@ -51,8 +49,28 @@ class SettingsScreen extends StatelessWidget {
             _SectionContainer(
               colorScheme: colorScheme,
               children: [
-                _SettingsTile(icon: Icons.help_outline, label: 'Help', colorScheme: colorScheme),
-                _SettingsTile(icon: Icons.people_outline, label: 'Invite Friends', colorScheme: colorScheme, isLast: true),
+                _SettingsTile(icon: Icons.help_outline, label: 'Help', colorScheme: colorScheme, onTap: () => Navigator.pushNamed(context, '/help')),
+                _SettingsTile(icon: Icons.people_outline, label: 'Invite Friends', colorScheme: colorScheme, isLast: true, onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      backgroundColor: colorScheme.surface,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                      title: Text('Invite Friends', style: TextStyle(color: colorScheme.onSurface)),
+                      content: Text('Share this link with your friends:\npingme.app/invite/user123', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.7))),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.pop(ctx), child: Text('Close', style: TextStyle(color: colorScheme.primary))),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(ctx);
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: const Text('Link copied to clipboard!'), backgroundColor: colorScheme.primary));
+                          },
+                          child: Text('Copy Link', style: TextStyle(color: colorScheme.primary, fontWeight: FontWeight.bold)),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
               ],
             ),
             const SizedBox(height: 40),

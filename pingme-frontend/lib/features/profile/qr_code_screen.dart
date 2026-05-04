@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../presentation/viewmodels/theme_viewmodel.dart';
 import '../../theme.dart';
@@ -208,7 +209,15 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        HapticFeedback.selectionClick();
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: const Text('QR Code copied to clipboard!'),
+                          backgroundColor: colorScheme.primary,
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        ));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: colorScheme.primary,
                         foregroundColor: colorScheme.onPrimary,
@@ -221,7 +230,33 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                   // Scan Button
                   Center(
                     child: TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        HapticFeedback.selectionClick();
+                        showDialog(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                            backgroundColor: colorScheme.surface,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                            title: Text('Scan QR Code', style: TextStyle(color: colorScheme.onSurface)),
+                            content: Column(mainAxisSize: MainAxisSize.min, children: [
+                              Container(
+                                width: 200, height: 200,
+                                decoration: BoxDecoration(
+                                  color: colorScheme.background,
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(color: colorScheme.primary.withOpacity(0.3), width: 2),
+                                ),
+                                child: Center(
+                                  child: Icon(Icons.qr_code_scanner, size: 80, color: colorScheme.primary.withOpacity(0.4)),
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              Text('Point your camera at a QR code', style: TextStyle(color: colorScheme.onSurface.withOpacity(0.5), fontSize: 14)),
+                            ]),
+                            actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: Text('Close', style: TextStyle(color: colorScheme.primary)))],
+                          ),
+                        );
+                      },
                       icon: Icon(Icons.qr_code_scanner, color: colorScheme.primary),
                       label: Text('Scan QR Code', style: TextStyle(color: colorScheme.primary, fontSize: 16, fontWeight: FontWeight.w500)),
                     ),

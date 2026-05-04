@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class CreateChannelScreen extends StatefulWidget {
   const CreateChannelScreen({super.key});
@@ -44,7 +46,39 @@ class _CreateChannelScreenState extends State<CreateChannelScreen> {
           // Channel photo
           Center(
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: colorScheme.surface,
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+                  builder: (ctx) => SafeArea(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTile(
+                          leading: Icon(Icons.camera_alt_outlined, color: colorScheme.onSurface),
+                          title: Text('Take Photo', style: TextStyle(color: colorScheme.onSurface)),
+                          onTap: () async {
+                            HapticFeedback.selectionClick();
+                            final status = await Permission.camera.request();
+                            if (status.isGranted) {
+                              Navigator.pop(ctx);
+                            } else {
+                              Navigator.pop(ctx);
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Camera permission required')));
+                            }
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.photo_library_outlined, color: colorScheme.onSurface),
+                          title: Text('Choose from Gallery', style: TextStyle(color: colorScheme.onSurface)),
+                          onTap: () => Navigator.pop(ctx),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
               child: CircleAvatar(
                 radius: 50,
                 backgroundColor: colorScheme.surface,
@@ -127,6 +161,9 @@ class _CreateChannelScreenState extends State<CreateChannelScreen> {
             height: 50,
             child: ElevatedButton(
               onPressed: _nameController.text.trim().isNotEmpty ? () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Channel "${_nameController.text}" created successfully!')),
+                );
                 Navigator.pop(context);
               } : null,
               style: ElevatedButton.styleFrom(
@@ -163,7 +200,10 @@ class _ChannelTypeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        HapticFeedback.selectionClick();
+        onTap();
+      },
       borderRadius: BorderRadius.circular(12),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

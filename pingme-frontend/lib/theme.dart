@@ -69,8 +69,8 @@ class WireTheme {
   );
 
   // --- Default Theme (Old UI Color from HTML) ---
-  static const Color defaultBackground = Color(0xFF0A0A0A);
-  static const Color defaultSurface = Color(0xFF17130F);
+  static const Color defaultBackground = Color(0xFF1A120B);
+  static const Color defaultSurface = Color(0xFF241E17);
   static const Color defaultPrimary = Color(0xFFF2BE8C); // Orange-ish primary
   static const Color defaultOnPrimary = Color(0xFF482904);
   static const Color defaultSecondary = Color(0xFF393430);
